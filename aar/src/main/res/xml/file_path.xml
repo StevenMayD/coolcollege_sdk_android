@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--"."表示所有路径-->
+    <external-path
+        name="external_files"
+        path="." />
+    <!--对应Context.getCacheDir() + “/pictures/”-->
+    <cache-path
+        name="cache"
+        path="pictures/" />
+    <cache-path
+        name="cache"
+        path="video/"/>
+    <cache-path
+        name="cache"
+        path="audio/"/>
+</paths>

@@ -1,0 +1,165 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="colorPrimary">@color/main_blue</item>
+        <item name="colorPrimaryDark">@color/main_blue</item>
+        <item name="colorAccent">@color/main_blue</item>
+
+    </style>
+    <style name="WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- 暂时取消冷启动优化背景图 -->
+<!--        <item name="android:windowBackground">@drawable/splash_icon</item>-->
+    </style>
+
+    <style name="loading_style_blue" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateOnly">true</item>
+        <item name="android:indeterminateDuration">1000</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:indeterminateDrawable">@drawable/drawable_progress_bar_blue</item>
+    </style>
+<!--    <style name="loading_style_gray" parent="Base.Widget.AppCompat.ProgressBar">-->
+<!--        <item name="android:indeterminateOnly">true</item>-->
+<!--        <item name="android:indeterminateDuration">1000</item>-->
+<!--        <item name="android:indeterminateBehavior">repeat</item>-->
+<!--        <item name="android:indeterminateDrawable">@drawable/drawable_progress_bar_gray</item>-->
+<!--    </style>-->
+<!--    <style name="progress_h_style" parent="Widget.AppCompat.ProgressBar.Horizontal">-->
+<!--        <item name="android:progressDrawable">@drawable/pg_h_blue</item>-->
+<!--        <item name="android:minHeight">@dimen/dp_1</item>-->
+<!--        <item name="android:maxHeight">@dimen/dp_3</item>-->
+<!--    </style>-->
+
+
+    <style name="dialog_style" parent="Theme.AppCompat.Light.Dialog">
+        <!--设置dialog的背景-->
+        <item name="android:windowBackground">@color/white</item>
+        <!--设置Dialog的windowFrame框为无-->
+        <item name="android:windowFrame">@null</item>
+        <!--设置无标题-->
+        <item name="windowNoTitle">true</item>
+        <!--是否浮现在activity之上，设置成true在部分机型上高度可能显示不全-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置动画-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <!--设置没有窗口标题、dialog标题等各种标题-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:title">@null</item>
+        <item name="android:dialogTitle">@null</item>
+    </style>
+
+<!--    <style name="line_blue_1">-->
+<!--        <item name="android:layout_width">match_parent</item>-->
+<!--        <item name="android:layout_height">@dimen/dp_1</item>-->
+<!--        <item name="android:background">@drawable/shape_title_btm_blue</item>-->
+<!--    </style>-->
+    <style name="line_gray_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:background">@drawable/shape_title_btm_gray</item>
+    </style>
+
+    <style name="line_h_gray_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:background">@color/gray_d9</item>
+    </style>
+
+    <style name="line_h_gray_05">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_05</item>
+        <item name="android:background">@color/gray_d9</item>
+    </style>
+    <style name="line_h_gray_f7_05">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_5</item>
+        <item name="android:background">@color/gray_f7</item>
+    </style>
+
+    <style name="list_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_05</item>
+        <item name="android:background">@color/gray_f4</item>
+    </style>
+
+    <style name="line_v_gray_05">
+        <item name="android:layout_width">@dimen/dp_05</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/gray_d9</item>
+    </style>
+
+    <style name="appBaseDialogStyle" parent="android:Theme.Material.Dialog">
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+
+    <style name="shadowDialogStyle" parent="android:Theme.Material.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="background">@color/transparent</item>
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+
+    <style name="dialogBtm2TopAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
+    </style>
+
+    <style name="dialogTop2BtmAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/top_pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/top_pop_exit_anim</item>
+    </style>
+
+    <style name="parting_line">
+        <item name="android:background">#EBECF3</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+    </style>
+    <!--全屏加透明，慢速启动-->
+    <style name="fullScreenTheme" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 遮罩层 -->
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <!-- dialog的动画 -->
+<!--    <style name="main_menu_animStyle">-->
+<!--        <item name="android:windowEnterAnimation">@anim/dialog_in_anim</item>-->
+<!--        <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>-->
+<!--    </style>-->
+</resources>
