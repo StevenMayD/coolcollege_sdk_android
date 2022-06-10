@@ -22,6 +22,7 @@ import com.coolcollege.aar.dialog.AppNotifyDialog;
 import com.coolcollege.aar.global.GlobalKey;
 import com.coolcollege.aar.helper.VideoRecorderHelper;
 import com.coolcollege.aar.provider.FilePathProvider;
+import com.coolcollege.aar.selector.MediaSelector;
 import com.coolcollege.aar.utils.ToastUtil;
 import com.coolcollege.aar.view.AutoFitTextureView;
 
@@ -201,7 +202,8 @@ public class VideoRecordActivity extends SimpleActivity {
         fileBean.file = new File(path);
         fileBean.duration = String.valueOf(duration);
         fileBean.size = FilePathProvider.getFileSize(path);
-        intent.putExtra(GlobalKey.VIDEO_PATH_KEY, fileBean);
+        intent.putExtra(MediaSelector.RESULT_DATA, fileBean);
+//        intent.putExtra(GlobalKey.VIDEO_PATH_KEY, fileBean);
         setResult(RESULT_OK, intent);
         finish();
     }

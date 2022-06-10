@@ -1,5 +1,6 @@
 package com.coolcollege.aar.callback;
 
 public interface KXYCallback {
-    void onCallback(Object callback);
+    void onOKCallback(Object callback);
+    void onErrorCallback(Object callback);
 }

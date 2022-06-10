@@ -322,7 +322,8 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
             case REQUEST_VIDEO:
                 //系统录像返回值
                 //Uri uri = intent.getData();
-                videoTemp = intent.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
+                videoTemp = intent.getParcelableExtra(MediaSelector.RESULT_DATA);
+//                videoTemp = intent.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
                 setRecordVideoResult();
                 break;
         }

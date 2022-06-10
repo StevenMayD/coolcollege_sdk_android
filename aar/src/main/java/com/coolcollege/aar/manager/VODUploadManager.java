@@ -97,17 +97,22 @@ public class VODUploadManager {
                 super.onUploadProgress(info, uploadedSize, totalSize);
                 if (listener != null) listener.onUploadProgress(info, uploadedSize, totalSize);
 
-                if (1 < uploadFile.files.size()) {
-                    if ("-1".equals(ossSize)){
-                        int pro = (int) ((double)(ossUpLoadNum + 1) / (double)uploadFile.files.size() * 100);
-                        tv_dl_pBar.setProgress(pro);
-                        tv_dl_num.setText(pro + "%");
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (1 < uploadFile.files.size()) {
+                            if ("-1".equals(ossSize)){
+                                int pro = (int) ((double)(ossUpLoadNum + 1) / (double)uploadFile.files.size() * 100);
+                                tv_dl_pBar.setProgress(pro);
+                                tv_dl_num.setText(pro + "%");
+                            }
+                        } else {
+                            int pro = (int) ((double)uploadedSize / (double)totalSize * 100);
+                            tv_dl_pBar.setProgress(pro);
+                            tv_dl_num.setText(pro + "%");
+                        }
                     }
-                } else {
-                    int pro = (int) ((double)uploadedSize / (double)totalSize * 100);
-                    tv_dl_pBar.setProgress(pro);
-                    tv_dl_num.setText(pro + "%");
-                }
+                });
 
                 if ("-1".equals(ossSize)){
                     ossSize = String.valueOf(totalSize);

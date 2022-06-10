@@ -40,6 +40,20 @@
         android:layout_margin="10dp"
         android:text="文件上传" />
 
+    <Button
+        android:id="@+id/btn_ossUploadFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="阿里上传" />
+
+    <Button
+        android:id="@+id/btn_shareMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="分享" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

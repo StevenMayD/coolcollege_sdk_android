@@ -68,7 +68,7 @@ public class AudioRecordDialog extends BaseDialog {
         }
     }
 
-    public AudioRecordDialog(@NonNull Context context) {
+    public  AudioRecordDialog(@NonNull Context context) {
         this(context, R.style.appBaseDialogStyle);
     }
 

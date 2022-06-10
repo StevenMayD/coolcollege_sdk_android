@@ -14,13 +14,19 @@ import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.Utils;
+import com.coolcollege.aar.bean.AudioRecordBean;
 import com.coolcollege.aar.bean.MediaItemBean;
+import com.coolcollege.aar.bean.NativeEventParams;
+import com.coolcollege.aar.bean.PickImgBean;
+import com.coolcollege.aar.bean.PickVideoBean;
 import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
+import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.callback.KXYCallback;
 import com.coolcollege.aar.global.GlobalKey;
 import com.coolcollege.aar.module.APIModule;
 import com.coolcollege.aar.selector.MediaSelector;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +40,12 @@ public class KXYAct extends Activity {
     private Button btn_chooseImage;
     private Button btn_chooseVideo;
     private Button btn_uploadFile;
+    private Button btn_ossUploadFile;
+    private Button btn_shareMenu;
     private TextView textView;
+
+    private String acToken = "af0e91b07e9a4887a9f3d895fc80c732";
+    private String entId = "1067985194709028888";
 
     private Utils.ActivityLifecycleCallbacks activityLifecycleCallbacks = new Utils.ActivityLifecycleCallbacks() {
         @Override
@@ -68,17 +79,14 @@ public class KXYAct extends Activity {
         btn_startAudioRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new APIModule().startAudioRecord(KXYAct.this, 10, new KXYCallback() {
-                    @Override
-                    public void onCallback(Object o) {
-                        TempFileBean tempFile = (TempFileBean) o;
-                        StringBuffer sb = new StringBuffer();
-                        sb.append("path: ").append(tempFile.path).append("\n");
-                        sb.append("size: ").append(tempFile.size).append("\n");
-                        sb.append("duration: ").append(tempFile.duration).append("\n");
-                        textView.setText(sb.toString());
-                    }
-                });
+                AudioRecordBean audioRecordBean = new AudioRecordBean();
+                audioRecordBean.maxDuration = 10;
+
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "startAudioRecord";
+                params.methodData = new Gson().toJson(audioRecordBean);
+
+                callModule(params);
             }
         });
 
@@ -86,7 +94,14 @@ public class KXYAct extends Activity {
         btn_startVideoRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new APIModule().startVideoRecord(KXYAct.this, 10, 123);
+                VideoRecordBean video = new VideoRecordBean();
+                video.maxDuration = 60;
+
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "startVideoRecord";
+                params.methodData = new Gson().toJson(video);
+
+                callModule(params);
             }
         });
 
@@ -94,7 +109,16 @@ public class KXYAct extends Activity {
         btn_chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new APIModule().chooseImage(KXYAct.this, 9, 80, true, 234);
+                PickImgBean imgBean = new PickImgBean();
+                imgBean.count = 9;
+                imgBean.percent = 80;
+                imgBean.compressed = true;
+
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "chooseImage";
+                params.methodData = new Gson().toJson(imgBean);
+
+                callModule(params);
             }
         });
 
@@ -102,7 +126,15 @@ public class KXYAct extends Activity {
         btn_chooseVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new APIModule().chooseVideo(KXYAct.this, 100, 3, 345);
+                PickVideoBean videoBean = new PickVideoBean();
+                videoBean.count = 9;
+                videoBean.maxDuration = 60;
+
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "chooseVideo";
+                params.methodData = new Gson().toJson(videoBean);
+
+                callModule(params);
             }
         });
 
@@ -115,48 +147,100 @@ public class KXYAct extends Activity {
                 uploadFileBean.url = "https://coolapi.coolcollege.cn/enterprise-api/common/upload";
                 uploadFileBean.filePath = "/storage/emulated/0/Pictures/Screenshots/Screenshot_20220506_172917_com.ikongjian.worker7741c888-7c30-48e2-9c3a-cf5f34c0bc46.jpg";
                 Map<String, String> formMap = new HashMap<>();
-                formMap.put("access_token", "23b2b840e0e444119706842817678a2d");
+                formMap.put("access_token", acToken);
                 uploadFileBean.formData = formMap;
 //                Map<String, String> headerMap = new HashMap<>();
 //                headerMap.put("access_token", "23b2b840e0e444119706842817678a2d");
 //                uploadFileBean.header = headerMap;
-                new APIModule().uploadFile(KXYAct.this, uploadFileBean, new KXYCallback() {
+
+
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "uploadFile";
+                params.methodData = new Gson().toJson(uploadFileBean);
+
+                callModule(params);
+            }
+        });
+
+        btn_ossUploadFile = findViewById(R.id.btn_ossUploadFile);
+        btn_ossUploadFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "OSSUploadFile";
+//                params.methodData = "{\"type\":\"image\",\"files\":[{\"filePath\": \"/storage/emulated/0/Pictures/Screenshots/Screenshot_20220506_172917_com.ikongjian.worker7741c888-7c30-48e2-9c3a-cf5f34c0bc46.jpg\", \"objectKey\":\"lu001\"}]}";
+                params.methodData = "{\"type\":\"video\",\"files\":[{\"filePath\": \"/storage/emulated/0/DCIM/Camera/VID_20220316_164604.mp4\", \"objectKey\":\"lu002\"}]}";
+
+                callModule(params);
+            }
+        });
+
+        btn_shareMenu = findViewById(R.id.btn_shareMenu);
+        btn_shareMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "shareMenu";
+//                params.methodData = "{\"logo\":\"https://oss.coolcollege.cn/1810536106161213440.png\"}";
+                params.methodData = "{\"url\":\"https://sdn.coolcollege.cn/coolcollege-apps-share/hd/index.html?token=87fa67b66479891aa5f25a0ee86d01e6&kid=1810536062049718272&eid=1067985194709028888&aid=cool\",\"title\":\"sgyw图文课测试\",\"content\":\"QQ\",\"logo\":\"https://oss.coolcollege.cn/1810536106161213440.png\"}";
+
+                callModule(params);
+            }
+        });
+    }
+
+    private void callModule (NativeEventParams params) {
+        APIModule.getAPIModule(KXYAct.this).moduleManage(params, acToken, entId, 123, new KXYCallback() {
+            @Override
+            public void onOKCallback(Object o) {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void onCallback(Object o) {
-                        textView.setText((String) o);
+                    public void run() {
+                        textView.setText(new Gson().toJson(o));
+                    }
+                });
+            }
+
+            @Override
+            public void onErrorCallback(Object o) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText(new Gson().toJson(o));
                     }
                 });
             }
         });
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null) return;
-        switch (requestCode) {
-            case 123:
-                TempFileBean videoTemp = data.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
-                StringBuffer sb = new StringBuffer();
-                sb.append("path: ").append(videoTemp.path).append("\n");
-                sb.append("size: ").append(videoTemp.size).append("\n");
-                sb.append("duration: ").append(videoTemp.duration).append("\n");
-                textView.setText(sb.toString());
-                break;
-            case 234:
-            case 345:
-                ArrayList<MediaItemBean> mediaItem = data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA);
-                StringBuffer sbMedia = new StringBuffer();
-                for (MediaItemBean item : mediaItem) {
-                    sbMedia.append("{");
-                    sbMedia.append("path: ").append(item.path).append("\n");
-                    sbMedia.append("size: ").append(item.size).append("\n");
-                    sbMedia.append("duration: ").append(item.duration);
-                    sbMedia.append("}").append("\n");
-                }
-                textView.setText(sbMedia.toString());
-                break;
-        }
+        textView.setText(new Gson().toJson(data.getParcelableExtra(MediaSelector.RESULT_DATA) != null ? data.getParcelableExtra(MediaSelector.RESULT_DATA) : data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA)));
+//        switch (requestCode) {
+//            case 123:
+////                TempFileBean videoTemp = data.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
+////                StringBuffer sb = new StringBuffer();
+////                sb.append("path: ").append(videoTemp.path).append("\n");
+////                sb.append("size: ").append(videoTemp.size).append("\n");
+////                sb.append("duration: ").append(videoTemp.duration).append("\n");
+////                textView.setText(sb.toString());
+//                textView.setText(new Gson().toJson(data));
+//                break;
+//            case 234:
+//            case 345:
+//                ArrayList<MediaItemBean> mediaItem = data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA);
+//                StringBuffer sbMedia = new StringBuffer();
+//                for (MediaItemBean item : mediaItem) {
+//                    sbMedia.append("{");
+//                    sbMedia.append("path: ").append(item.path).append("\n");
+//                    sbMedia.append("size: ").append(item.size).append("\n");
+//                    sbMedia.append("duration: ").append(item.duration);
+//                    sbMedia.append("}").append("\n");
+//                }
+//                textView.setText(sbMedia.toString());
+//                break;
+//        }
     }
 }

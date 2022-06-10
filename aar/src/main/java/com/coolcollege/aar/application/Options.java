@@ -3,6 +3,8 @@ package com.coolcollege.aar.application;
 
 import android.app.Application;
 
+import com.coolcollege.aar.helper.RetrofitHelper;
+
 public class Options {
 
     private static Application instance;
@@ -17,7 +19,7 @@ public class Options {
 //        PlatformApplication.get().init(application);
 //        application.registerActivityLifecycleCallbacks(AppActivityLifeCycleImpl.get());
 //        Utils.init(application);
-//        RetrofitHelper.get().init(EnvHost.PLATFORM_RELEASE_HOST);
+        RetrofitHelper.get().init("https://coolapi.coolcollege.cn/platform-api/");
 //        appNotification = new AppNotification(application.getApplicationContext());
 //        CrashHandlerUtils crashHandler = CrashHandlerUtils.getInstance();
 //        crashHandler.init(application.getApplicationContext());

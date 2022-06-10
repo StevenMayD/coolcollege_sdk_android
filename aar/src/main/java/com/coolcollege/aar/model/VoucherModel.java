@@ -12,16 +12,10 @@ import java.util.HashMap;
  */
 public class VoucherModel {
 
-    public <T> void VoucherModel(String file_name, RawResponseCallback<T> callback){
+    public <T> void VoucherModel(String accessToken, String enterprise, String file_name, RawResponseCallback<T> callback){
         HashMap<String, String> map = ParameterUtils.genericParams("file_name", file_name);
-
-//        String url = UrlProvider.builder()
-//                .host(EnvHost.ENTERPRISE)
-//                .path(UrlPath.POST_VOUCHER + MemCacheUtils.get().getToken())
-//                .replacePath(GlobalKey.P_ENTERPRISE_ID, MemCacheUtils.get().getEnterpriseId())
-//                .build();
-//
-//        RetrofitHelper.get().doRawPostByJson(url, map, callback);
+        String url = "https://coolapi.coolcollege.cn/enterprise-api/v2/"+ enterprise +"/ticket?access_token=" + accessToken;
+        RetrofitHelper.get().doRawPostByJson(url, map, callback);
     }
 
 }

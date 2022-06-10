@@ -12,13 +12,18 @@ import android.widget.Toast;
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
 import com.coolcollege.aar.R;
 import com.coolcollege.aar.act.VideoRecordActivity;
+import com.coolcollege.aar.bean.AudioRecordBean;
 import com.coolcollege.aar.bean.NativeEventParams;
+import com.coolcollege.aar.bean.OKGOBean;
 import com.coolcollege.aar.bean.OSSConfigBean;
 import com.coolcollege.aar.bean.OSSUploadFileBean;
+import com.coolcollege.aar.bean.PickImgBean;
+import com.coolcollege.aar.bean.PickVideoBean;
 import com.coolcollege.aar.bean.RawResponseBean;
 import com.coolcollege.aar.bean.ShareParams;
 import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
+import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.bean.VoucherBean;
 import com.coolcollege.aar.callback.KXYCallback;
 import com.coolcollege.aar.callback.RawResponseCallback;
@@ -28,6 +33,7 @@ import com.coolcollege.aar.component.NativeDataProvider;
 import com.coolcollege.aar.dialog.AppShareDialog;
 import com.coolcollege.aar.dialog.AudioRecordDialog;
 import com.coolcollege.aar.manager.VODUploadManager;
+import com.coolcollege.aar.model.ErrorModel;
 import com.coolcollege.aar.model.OSSConfigModel;
 import com.coolcollege.aar.model.OSSResItem;
 import com.coolcollege.aar.model.ShareMenuModel;
@@ -36,6 +42,7 @@ import com.coolcollege.aar.selector.MediaSelector;
 import com.coolcollege.aar.utils.GsonConfig;
 import com.coolcollege.aar.utils.PermissionManager;
 import com.coolcollege.aar.utils.PermissionStateListener;
+import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Progress;
@@ -68,27 +75,66 @@ public class APIModule {
     /** 分享弹窗 */
     private AppShareDialog shareDialog;
 
+    private String acToken;
+    private String entId;
+    private KXYCallback kxyCallback;
+    private int reqCode;
+
     public static APIModule getAPIModule (Activity activity) {
         act = activity;
         return apiModule;
     }
 
+    /** 主入口 */
+    public void moduleManage (NativeEventParams params, String accessToken, String enterpriseId, int requestCode, KXYCallback callback) {
+        acToken = accessToken;
+        entId = enterpriseId;
+        kxyCallback = callback;
+        reqCode = requestCode;
+        if ("startAudioRecord".equals(params.methodName)) { // 音频录制
+            AudioRecordBean audio = NativeDataProvider.parseData(params.methodData, AudioRecordBean.class);
+            startAudioRecord(audio);
+        } else if ("startVideoRecord".equals(params.methodName)) { // 视频录制
+            VideoRecordBean video = NativeDataProvider.parseData(params.methodData, VideoRecordBean.class);
+            startVideoRecord(video);
+        } else if ("chooseImage".equals(params.methodName)) { // 选择图片（相册/相机）
+            PickImgBean imgData = NativeDataProvider.parseData(params.methodData, PickImgBean.class);
+            chooseImage(imgData);
+        } else if ("chooseVideo".equals(params.methodName)) { // 选择视频（相册/相机）
+            PickVideoBean videoData = NativeDataProvider.parseData(params.methodData, PickVideoBean.class);
+            chooseVideo(videoData);
+        } else if ("uploadFile".equals(params.methodName)) { // 通用文件上传
+            UploadFileBean upload = NativeDataProvider.parseData(params.methodData, UploadFileBean.class);
+            uploadFile(upload);
+        } else if ("OSSUploadFile".equals(params.methodName)) { // 阿里上传
+            ossUp = GsonConfig.get().getGson().fromJson(params.methodData, OSSUploadFileBean.class);
+            if ("video".equals(ossUp.type)) {
+                voucher();
+            } else {
+                ossConfig();
+            }
+        } else if ("shareMenu".equals(params.methodName)) { // 分享
+            ArrayList<ShareParams> data = NativeDataProvider.genericShareMenuData(params.methodData);
+            buildShareDialog(data);
+        }
+    }
+
     /** 音频录制 */
-    public void startAudioRecord (Activity activity, int maxDuration, KXYCallback callback) {
-        PermissionManager.checkPermissions(activity, new PermissionStateListener() {
+    private void startAudioRecord (AudioRecordBean audio) {
+        PermissionManager.checkPermissions(act, new PermissionStateListener() {
             @Override
             public void onGranted() {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (audioDialog == null) audioDialog = new AudioRecordDialog(activity);
-                        audioDialog.setMaxDuration(maxDuration);
+                        if (audioDialog == null) audioDialog = new AudioRecordDialog(act);
+                        audioDialog.setMaxDuration(audio.maxDuration);
                         audioDialog.show();
 
                         audioDialog.setOnRecordCompleteListener(new AudioRecordDialog.OnRecordCompleteListener() {
                             @Override
                             public void onComplete(TempFileBean tempFile) {
-                                callback.onCallback(tempFile);
+                                kxyCallback.onOKCallback(tempFile);
                             }
                         });
                     }
@@ -97,92 +143,91 @@ public class APIModule {
 
             @Override
             public void onDenied() {
-                Toast.makeText(activity, "请前往手机设置打开录音相应的权限", Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "请前往手机设置打开录音相应的权限", Toast.LENGTH_LONG).show();
             }
         }, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE, Permission.RECORD_AUDIO);
     }
 
     /** 视频录制 */
-    public void startVideoRecord (Activity activity, int maxDuration, int requestCode) {
-        PermissionManager.checkPermissions(activity,new PermissionStateListener() {
+    private void startVideoRecord (VideoRecordBean video) {
+        PermissionManager.checkPermissions(act,new PermissionStateListener() {
             @Override
             public void onGranted() {
-                Intent intent = new Intent(activity, VideoRecordActivity.class);
-                intent.putExtra("duration", maxDuration);
-                activity.startActivityForResult(intent, requestCode);
+                Intent intent = new Intent(act, VideoRecordActivity.class);
+                intent.putExtra("duration", video.maxDuration);
+                act.startActivityForResult(intent, reqCode);
             }
 
             @Override
             public void onDenied() {
-                Toast.makeText(activity, "请前往手机设置打开录像相应的权限", Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "请前往手机设置打开录像相应的权限", Toast.LENGTH_LONG).show();
             }
         },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE, Permission.RECORD_AUDIO);
     }
 
     /** 照片选择（带相机） */
-    public void chooseImage (Activity activity, int maxCount, int percent, boolean compressed, int requestCode) {
-        PermissionManager.checkPermissions(activity, new PermissionStateListener() {
+    private void chooseImage (PickImgBean imgData) {
+        PermissionManager.checkPermissions(act, new PermissionStateListener() {
             @Override
             public void onGranted() {
-                MediaSelector.from(activity)
+                MediaSelector.from(act)
                         .withType(MediaSelector.TYPE_IMG)
-                        .maxSelectCount(maxCount)
-                        .compressed(compressed)
-                        .percent(percent)
-                        .forResult(requestCode);
+                        .maxSelectCount(imgData.count)
+                        .compressed(imgData.compressed)
+                        .percent(imgData.percent)
+                        .forResult(reqCode);
             }
 
             @Override
             public void onDenied() {
-                Toast.makeText(activity, "请前往手机设置打开相机相应的权限", Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "请前往手机设置打开相机相应的权限", Toast.LENGTH_LONG).show();
             }
         },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE);
     }
 
     /** 选择视频（带录制） */
-    public void chooseVideo (Activity activity, int maxDuration, int maxCount, int requestCode) {
-        PermissionManager.checkPermissions(activity,new PermissionStateListener() {
+    private void chooseVideo (PickVideoBean videoData) {
+        PermissionManager.checkPermissions(act,new PermissionStateListener() {
             @Override
             public void onGranted() {
-                MediaSelector.from(activity)
+                MediaSelector.from(act)
                         .withType(MediaSelector.TYPE_VIDEO)
-                        .maxDuration(maxDuration)
-                        .maxSelectCount(maxCount)
-                        .forResult(requestCode);
+                        .maxDuration(videoData.maxDuration)
+                        .maxSelectCount(videoData.count)
+                        .forResult(reqCode);
             }
 
             @Override
             public void onDenied() {
-                Toast.makeText(activity, "请前往手机设置打开录像相应的权限", Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "请前往手机设置打开录像相应的权限", Toast.LENGTH_LONG).show();
             }
         },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE, Permission.RECORD_AUDIO);
     }
 
     /**
      * 文件上传
-     * @param activity
      * @param params
-     * @param callback 回调
      */
-    public void uploadFile (Activity activity, UploadFileBean params, KXYCallback callback) {
-        PermissionManager.checkPermissions(activity,new PermissionStateListener() {
+    private void uploadFile (UploadFileBean params) {
+        PermissionManager.checkPermissions(act, new PermissionStateListener() {
             @Override
             public void onGranted() {
-                upFile(activity, params, callback);
+                upFile(params);
             }
 
             @Override
             public void onDenied() {
-                Toast.makeText(activity, "请前往手机设置打开上传相应的权限", Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "请前往手机设置打开上传相应的权限", Toast.LENGTH_LONG).show();
             }
         }, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE);
     }
 
-    private void upFile(Activity activity, UploadFileBean params, KXYCallback callback) {
-        showLoading(activity);
+    private void upFile(UploadFileBean params) {
+        showLoading(act);
         File file = new File(params.filePath);
         if (!file.exists()) {
-            Toast.makeText(activity, "file not exists", Toast.LENGTH_LONG).show();
+            kxyCallback.onErrorCallback(new ErrorModel(true, "文件不存在").toJson());
+            Toast.makeText(act, "file not exists", Toast.LENGTH_LONG).show();
             dialog.dismiss();
             return;
         }
@@ -205,10 +250,12 @@ public class APIModule {
         postRequest.execute(new StringCallback() {
             @Override
             public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                if (response != null && response.code() == 200) {
-                    callback.onCallback(response.body());
+                OKGOBean okgoBean = NativeDataProvider.parseData(response.body(), OKGOBean.class);
+                if (okgoBean != null && okgoBean.getCode() == 0) {
+                    kxyCallback.onOKCallback(response.body());
                 } else {
-                    Toast.makeText(activity, response.code() + "=" + response.message(), Toast.LENGTH_LONG).show();
+                    kxyCallback.onErrorCallback(new ErrorModel(true, okgoBean.getMsg()).toJson());
+                    Toast.makeText(act, response.code() + "=" + response.message(), Toast.LENGTH_LONG).show();
                 }
                 dialog.dismiss();
             }
@@ -216,7 +263,8 @@ public class APIModule {
             @Override
             public void onError(com.lzy.okgo.model.Response<String> response) {
                 super.onError(response);
-                Toast.makeText(activity, response.code() + "=" + response.message(), Toast.LENGTH_LONG).show();
+                kxyCallback.onErrorCallback(new ErrorModel(true, response.message()).toJson());
+                Toast.makeText(act, response.code() + "=" + response.message(), Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
 
@@ -228,27 +276,13 @@ public class APIModule {
         });
     }
 
-    public void moduleManage (NativeEventParams params) {
-        if ("OSSUploadFile".equals(params.methodName)) {
-            ossUp = GsonConfig.get().getGson().fromJson(params.methodData, OSSUploadFileBean.class);
-            if ("video".equals(ossUp.type)) {
-                voucher();
-            } else {
-                ossConfig();
-            }
-        }
-
-        if ("shareMenu".equals(params.methodName)) {
-            ArrayList<ShareParams> data = NativeDataProvider.genericShareMenuData(params.methodData);
-            buildShareDialog(data);
-        }
-    }
-
+    /** 分享 */
     private void buildShareDialog(ArrayList<ShareParams> data) {
         if (shareDialog == null) shareDialog = new AppShareDialog(act);
         shareDialog.initList(data, new ShareMenuListener() {
             @Override
             public void onComplete(ShareMenuModel shareMenuModel) {
+                kxyCallback.onOKCallback(new Gson().toJson(shareMenuModel));
                 releaseChild();
             }
 
@@ -262,19 +296,19 @@ public class APIModule {
                 releaseChild();
             }
         });
-        dialog.show();
+        shareDialog.show();
     }
 
     protected void releaseChild() {
-        if(dialog != null){
-            dialog.dismiss();
-            dialog = null;
+        if(shareDialog != null){
+            shareDialog.dismiss();
+            shareDialog = null;
         }
     }
 
     private void ossConfig(){
         OSSConfigModel ossConfigModel = new OSSConfigModel();
-        ossConfigModel.OSSConfigModel(new RawResponseCallback<OSSConfigBean>() {
+        ossConfigModel.OSSConfigModel(acToken ,new RawResponseCallback<OSSConfigBean>() {
             @Override
             public void onSuccess(RawResponseBean<OSSConfigBean> responseBean, String stResponse) {
                 ossRes = responseBean.data;
@@ -284,7 +318,7 @@ public class APIModule {
                     try {
                         JSONObject result = new JSONObject(stResponse);
                         JSONObject data = new JSONObject(result.get("data") + "");
-//                        callBackError(new OSSErrorModel(String.valueOf(data.get("code")), String.valueOf(data.get("msg"))).toJson());
+                        kxyCallback.onErrorCallback(new ErrorModel(true, String.valueOf(data.get("msg"))).toJson());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -293,31 +327,31 @@ public class APIModule {
 
             @Override
             public void onError(String msg, int code) {
-//                callBackError(new OSSErrorModel(String.valueOf(code), msg).toJson());
+                kxyCallback.onErrorCallback(new ErrorModel(true, msg).toJson());
             }
         });
     }
 
     private void voucher () {
         if (0 == ossUp.files.size()) {
-//            callBackError(new OSSErrorModel("取视频列表错误", "前端传输视频列表为空").toJson());
+            kxyCallback.onErrorCallback(new ErrorModel(true, "前端传输视频列表为空").toJson());
             return;
         }
         VoucherModel voucherModel = new VoucherModel();
-        voucherModel.VoucherModel(ossUp.files.get(0).objectKey + ".mp4", new RawResponseCallback<VoucherBean>() {
+        voucherModel.VoucherModel(acToken, entId, ossUp.files.get(0).objectKey + ".mp4", new RawResponseCallback<VoucherBean>() {
             @Override
             public void onSuccess(RawResponseBean<VoucherBean> responseBean, String stResponse) {
                 voucherBean = responseBean.data;
                 if (voucherBean != null) {
                     vodUpload();
                 } else {
-//                    callBackError(new OSSErrorModel("取凭证错误", "获取凭证失败").toJson());
+                    kxyCallback.onErrorCallback(new ErrorModel(true, "获取凭证失败").toJson());
                 }
             }
 
             @Override
             public void onError(String msg, int code) {
-//                callBackError(new OSSErrorModel(String.valueOf(code), msg).toJson());
+                kxyCallback.onErrorCallback(new ErrorModel(true, msg).toJson());
             }
         });
     }
@@ -326,12 +360,12 @@ public class APIModule {
         VODUploadManager.getInstance().VODUpload(act, ossRes, voucherBean, ossUp, new VODUploadListener() {
             @Override
             public void onUploadSucceed(List<OSSResItem> items) {
-//                callBackResult(items);
+                kxyCallback.onOKCallback(items);
             }
 
             @Override
             public void onUploadFailed(UploadFileInfo info, String code, String message) {
-//                callBackError(new OSSErrorModel(code, message).toJson());
+                kxyCallback.onErrorCallback(new ErrorModel(true, message).toJson());
             }
 
             @Override
