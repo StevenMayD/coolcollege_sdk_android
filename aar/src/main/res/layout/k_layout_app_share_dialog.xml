@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="@dimen/k_dp_30"
+        android:textColor="@color/k_black"
+        android:text="@string/k_share_title_dialog" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/k_dp_10"
+        android:layout_marginBottom="@dimen/k_dp_10"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <TextView
+        style="@style/k_line_h_gray_05"
+        android:layout_marginTop="@dimen/k_dp_10" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/k_dp_15"
+        android:text="@string/k_cancel_text"
+        android:textColor="@color/k_black_2d"
+        android:textSize="@dimen/k_sp_15" />
+</LinearLayout>

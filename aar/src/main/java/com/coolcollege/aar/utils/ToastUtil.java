@@ -11,7 +11,7 @@ public class ToastUtil {
 
 
     public static void showToast(String text){
-        View view = View.inflate(Options.get(), R.layout.layout_custom_toast, null);
+        View view = View.inflate(Options.get(), R.layout.k_layout_custom_toast, null);
         TextView tvMsg = view.findViewById(R.id.tv_msg);
         tvMsg.setText(text);
         ToastUtils.showCustomShort(view);

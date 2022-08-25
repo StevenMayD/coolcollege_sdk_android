@@ -30,7 +30,7 @@ public class AppNotifyDialog extends BaseDialog {
     private View mView;
 
     public AppNotifyDialog(@NonNull Context context) {
-        this(context, R.style.appBaseDialogStyle);
+        this(context, R.style.k_appBaseDialogStyle);
     }
 
     public AppNotifyDialog(@NonNull Context context, int themeResId) {
@@ -39,7 +39,7 @@ public class AppNotifyDialog extends BaseDialog {
 
     @Override
     protected int initLayout() {
-        return R.layout.layout_app_notify_dialog;
+        return R.layout.k_layout_app_notify_dialog;
     }
 
     @Override

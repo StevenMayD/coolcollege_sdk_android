@@ -1,253 +1,253 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="selected_label_text">已选：</string>
-    <string name="selected_label_text2">已选择：</string>
-    <string name="complete_text">完成</string>
-    <string name="edit_text">编辑</string>
-    <string name="all_label_text">全部：</string>
-    <string name="cancel_text">取消</string>
-    <string name="confirm_text">确定</string>
-    <string name="percent_text">%</string>
-    <string name="people_text">人</string>
-    <string name="empty_place_holder">&#8194;</string>
-    <string name="play_duration_zero_text">00:00:00</string>
-    <string name="play_duration_zero2_text">00:00 / 00:00</string>
-    <string name="video_can_not_drag_text" translatable="false">视频未播放完，暂不允许快进</string>
-    <string name="audio_can_not_drag_text" translatable="false">音频未播放完，暂不允许快进</string>
-    <string name="permission_change_file_text" translatable="false">请前往手机设置开通修改文件的权限</string>
-    <string name="login_text">登录</string>
-    <string name="bracket_left_text">(</string>
-    <string name="bracket_right_text">)</string>
-    <string name="input_phone_number_text">请输入手机号</string>
-    <string name="input_account_number_text">请输入手机号或邮箱</string>
-    <string name="forgot_pwd_text">忘记密码？</string>
-    <string name="input_password_text">请输入登录密码</string>
-    <string name="input_verify_code_text">请输入验证码</string>
-    <string name="phone_number_text">手机号码</string>
-    <string name="account_number_text">账号</string>
-    <string name="new_password_text">新密码</string>
-    <string name="input_password_rule_text">请输入密码</string>
-    <string name="input_confirm_pwd_text">请再次输入密码确认</string>
-    <string name="confirm_pwd_text">确认密码</string>
-    <string name="verification_code_text">验证码</string>
-    <string name="get_verification_code_text">获取验证码</string>
-    <string name="reset_pwd_text">重置密码</string>
-    <string name="mobile_empty_text">手机号不能为空</string>
-    <string name="account_empty_text">账号不能为空</string>
-    <string name="password_empty_text">密码不能为空</string>
-    <string name="password_confirm_empty_text">请输入确认密码</string>
-    <string name="default_primary_color_text">#465DCD</string>
-    <string name="default_bg_color_text">#fff</string>
-    <string name="mobile_length_m_11_text">手机号码长度为11位数</string>
-    <string name="password_length_m_6_text">密码长度不能小于6位</string>
-    <string name="pwd_and_confirm_not_equal_text">两次密码不一致</string>
-    <string name="mobile_illegal_text">请输入正确的手机号码</string>
-    <string name="password_illegal_text">密码应同时包含大小写字母与数字</string>
-    <string name="verification_code_empty_text">验证码不能为空</string>
-    <string name="verification_code_m_6_text">验证码为6位数字，请重新输入</string>
-    <string name="pwd_reset_success_text">密码重置成功,请返回登录</string>
-    <string name="audition_time_is_over_text">试看时间已到，请购买后观看</string>
-    <string name="get_info_from_net_retry_text">获取配置信息失败，正在重试</string>
-    <string name="get_info_from_net_fail_text">重试获取配置信息失败，即将退出</string>
-    <string name="server_error_pls_retry_text">服务器异常，即将退出</string>
-    <string name="no_record_text">无录音</string>
-    <string name="permission_denied_file_text">请前往手机设置打开读写存储的权限</string>
-    <string name="permission_denied_text">请前往手机设置打开相应的权限</string>
-    <string name="permission_denied_by_camera_text">请前往手机设置打开相机的权限</string>
-    <string name="permission_gps_text">请前往手机设置打开GPS权限</string>
-    <string name="all_picture_text">所有图片</string>
-    <string name="all_video_text">所有视频</string>
-    <string name="select_video_max_count_8_text" translatable="false">最多只能选择8张图片</string>
-    <string name="max_select_count_text" translatable="false">最多只能选择</string>
-    <string name="zhang_text" translatable="false">张</string>
-    <string name="ge_text" translatable="false">个</string>
-    <string name="picture_text" translatable="false">图片</string>
-    <string name="video_text" translatable="false">视频</string>
-    <string name="seconds_text">秒</string>
-    <string name="seconds_eng_text">s</string>
-    <string name="duration_end_text">"</string>
-    <string name="permission_audio_record_text" translatable="false">请前往手机设置打开录音权限</string>
-    <string name="audio_record_min_tie" translatable="false">录音时长过短</string>
-    <string name="replace_img_text">替换图片</string>
-    <string name="loading_text">加载中...</string>
-    <string name="file_size_too_large_text">文件大小超过上传限制</string>
-    <string name="recording_too_short_text" translatable="false">录制时间太短</string>
-    <string name="select_current_video_text" translatable="false">确定使用当前录制的视频？</string>
-    <string name="default_zero_text" translatable="false">0</string>
-    <string name="is_loading_text" translatable="false">加载数据中...</string>
-    <string name="login_title_text">企业精准化学习平台</string>
-    <string name="login_title2_text" translatable="false">在线学习平台</string>
-    <string name="password_login_text">密码登录</string>
-    <string name="code_login_text">验证码登录</string>
-    <string name="register_text">注册</string>
-    <string name="enterprise_register_text" tools:ignore="ExtraTranslation">企业注册</string>
-    <string name="enterprise_register_text_new" tools:ignore="ExtraTranslation">企业注册（企业管理员）</string>
-    <string name="next_text">下一步</string>
-    <string name="verification_code_send_text">验证码已发送</string>
-    <string name="get_verification_code_fail_text">获取验证码失败，请重试</string>
-    <string name="verification_code_length_m_6_text">验证码长度不能小于6位</string>
-    <string name="account_not_registered_text">该手机号未注册，请先注册</string>
-    <string name="select_enterprise_text">请选择要进入的公司</string>
-    <string name="select_company_text">选择公司</string>
-    <string name="register_tip_text">请填写真实信息，让您的同事更容易找到你(必填)。</string>
-    <string name="name_text">姓名</string>
-    <string name="input_pls_text">请输入</string>
-    <string name="company_name_text">企业名称</string>
-    <string name="input_company_name_m_30_text">企业全称，如：酷渲（北京）科技有限公司</string>
-    <string name="the_position_text">职务</string>
-    <string name="select_pls_text">请选择</string>
-    <string name="company_scale_text">企业规模</string>
-    <string name="industry_text">所属行业</string>
-    <string name="places_of_city_text">所在城市</string>
-    <string name="register_form_title">申请试用</string>
-    <string name="getting_scale_data_text">正在获取企业规模...</string>
-    <string name="getting_address_data_text">正在获取所在城市...</string>
-    <string name="getting_position_data_text">正在获取职务信息...</string>
-    <string name="getting_industry_data_text">正在获取所属行业...</string>
-    <string name="register_success_text">注册成功</string>
-    <string name="register_fail_text">注册失败</string>
-    <string name="verification_code_invalid_text">验证码已失效，请重新获取验证码</string>
-    <string name="name_empty_text">请输入姓名</string>
-    <string name="position_empty_text">请选择职务</string>
-    <string name="company_name_empty_text">请输入企业名称</string>
-    <string name="scale_empty_text">请选择企业规模</string>
-    <string name="industry_empty_text">请选择所属行业</string>
-    <string name="city_empty_text">请选择所在城市</string>
-    <string name="scan_code_to_join_group_text">扫一扫，快速加入我们的企业/组织/团队</string>
-    <string name="scan_code_to_down_load_text">请扫描上方二维码或复制链接进行下载</string>
-    <string name="share_to_wechat_text">分享至微信</string>
-    <string name="share_to_ding_text">分享至钉钉</string>
-    <string name="save_qr_code_text">保存二维码</string>
-    <string name="qr_code_link_invite_text">二维码、链接邀请</string>
-    <string name="making_qr_code_text">正在生成二维码...</string>
-    <string name="save_img_to_text">图片已经保存到</string>
-    <string name="save_img_fail_text">图片保存失败</string>
-    <string name="get_verification_code_first_text">请先获取验证码</string>
-    <string name="login_agree_text">我已阅读并同意</string>
-    <string name="part_of_text">的</string>
-    <string name="and_text">和</string>
-    <string name="policy_text">《隐私政策》</string>
-    <string name="private_text">《用户协议》</string>
-    <string name="private_user_text">用户协议</string>
-    <string name="private_policy_text">隐私政策</string>
-    <string name="server_and_policy_text">服务协议和隐私政策</string>
-    <string name="app_update_text">发现新版本</string>
-    <string name="update_now_text">立即更新</string>
-    <string name="next_time_text">下次再说</string>
-    <string name="downloading_text">正在下载</string>
-    <string name="default_downloading_text">正在下载 0%</string>
-    <string name="download_completed_text">下载完成</string>
-    <string name="download_failed_text">下载更新包失败</string>
-    <string name="version_label">版本：</string>
-    <string name="version_en_text">v</string>
-    <string name="update_time_label">更新时间：</string>
-    <string name="update_desc_label">功能说明：</string>
-    <string name="new_line_text">\n</string>
-    <string name="sure_use_this_config_text">确定使用当前配置吗？</string>
-    <string name="photo_album_text" translatable="false">相册</string>
-    <string name="config_server_info_text" translatable="false">配置服务器信息</string>
-    <string name="unrecognized_qr_code_text" translatable="false">未识别的图片</string>
-    <string name="scan_config_text" translatable="false">扫码登录</string>
-    <string name="scan_guide_btm_text">请登录PC端首页或联系企业管理员 获取企业登录识别码</string>
-    <string name="scan_qr_code_to_config_text" translatable="false">扫描企业登录识别码</string>
-    <string name="server_config_error_text" translatable="false">配置信息错误</string>
-    <string name="policy_part1_text">请您务必审慎阅读、充分理解《用户协议》和《隐私政策》的条款，包括但不限于：为了向您课程学习、培训任务等服务，我们需要收集您的设备信息、操作日志等个人信息。您可以在“设置\"中查看、变更、删除个人信息并管理你的授权。</string>
-    <string name="policy_part2_start_text">您可阅读</string>
-    <string name="policy_part2_end_text">了解详细信息。如你同意，请点击\"同意“开始接受我们的服务。</string>
-    <string name="stop_use_text">暂不使用</string>
-    <string name="agree_text">同意</string>
-    <string name="share_success_text">分享成功</string>
-    <string name="share_fail_text">分享失败</string>
-    <string name="share_cancel_text">已取消分享</string>
-    <string name="we_chat_text">微信</string>
-    <string name="we_chat_moment_text">朋友圈</string>
-    <string name="ding_ding_text">钉钉</string>
-    <string name="not_found_wechat_text">没有安装微信，请先安装</string>
+    <string name="k_selected_label_text">已选：</string>
+    <string name="k_selected_label_text2">已选择：</string>
+    <string name="k_complete_text">完成</string>
+    <string name="k_edit_text">编辑</string>
+    <string name="k_all_label_text">全部：</string>
+    <string name="k_cancel_text">取消</string>
+    <string name="k_confirm_text">确定</string>
+    <string name="k_percent_text">%</string>
+    <string name="k_people_text">人</string>
+    <string name="k_empty_place_holder">&#8194;</string>
+    <string name="k_play_duration_zero_text">00:00:00</string>
+    <string name="k_play_duration_zero2_text">00:00 / 00:00</string>
+    <string name="k_video_can_not_drag_text" translatable="false">视频未播放完，暂不允许快进</string>
+    <string name="k_audio_can_not_drag_text" translatable="false">音频未播放完，暂不允许快进</string>
+    <string name="k_permission_change_file_text" translatable="false">请前往手机设置开通修改文件的权限</string>
+    <string name="k_login_text">登录</string>
+    <string name="k_bracket_left_text">(</string>
+    <string name="k_bracket_right_text">)</string>
+    <string name="k_input_phone_number_text">请输入手机号</string>
+    <string name="k_input_account_number_text">请输入手机号或邮箱</string>
+    <string name="k_forgot_pwd_text">忘记密码？</string>
+    <string name="k_input_password_text">请输入登录密码</string>
+    <string name="k_input_verify_code_text">请输入验证码</string>
+    <string name="k_phone_number_text">手机号码</string>
+    <string name="k_account_number_text">账号</string>
+    <string name="k_new_password_text">新密码</string>
+    <string name="k_input_password_rule_text">请输入密码</string>
+    <string name="k_input_confirm_pwd_text">请再次输入密码确认</string>
+    <string name="k_confirm_pwd_text">确认密码</string>
+    <string name="k_verification_code_text">验证码</string>
+    <string name="k_get_verification_code_text">获取验证码</string>
+    <string name="k_reset_pwd_text">重置密码</string>
+    <string name="k_mobile_empty_text">手机号不能为空</string>
+    <string name="k_account_empty_text">账号不能为空</string>
+    <string name="k_password_empty_text">密码不能为空</string>
+    <string name="k_password_confirm_empty_text">请输入确认密码</string>
+    <string name="k_default_primary_color_text">#465DCD</string>
+    <string name="k_default_bg_color_text">#fff</string>
+    <string name="k_mobile_length_m_11_text">手机号码长度为11位数</string>
+    <string name="k_password_length_m_6_text">密码长度不能小于6位</string>
+    <string name="k_pwd_and_confirm_not_equal_text">两次密码不一致</string>
+    <string name="k_mobile_illegal_text">请输入正确的手机号码</string>
+    <string name="k_password_illegal_text">密码应同时包含大小写字母与数字</string>
+    <string name="k_verification_code_empty_text">验证码不能为空</string>
+    <string name="k_verification_code_m_6_text">验证码为6位数字，请重新输入</string>
+    <string name="k_pwd_reset_success_text">密码重置成功,请返回登录</string>
+    <string name="k_audition_time_is_over_text">试看时间已到，请购买后观看</string>
+    <string name="k_get_info_from_net_retry_text">获取配置信息失败，正在重试</string>
+    <string name="k_get_info_from_net_fail_text">重试获取配置信息失败，即将退出</string>
+    <string name="k_server_error_pls_retry_text">服务器异常，即将退出</string>
+    <string name="k_no_record_text">无录音</string>
+    <string name="k_permission_denied_file_text">请前往手机设置打开读写存储的权限</string>
+    <string name="k_permission_denied_text">请前往手机设置打开相应的权限</string>
+    <string name="k_permission_denied_by_camera_text">请前往手机设置打开相机的权限</string>
+    <string name="k_permission_gps_text">请前往手机设置打开GPS权限</string>
+    <string name="k_all_picture_text">所有图片</string>
+    <string name="k_all_video_text">所有视频</string>
+    <string name="k_select_video_max_count_8_text" translatable="false">最多只能选择8张图片</string>
+    <string name="k_max_select_count_text" translatable="false">最多只能选择</string>
+    <string name="k_zhang_text" translatable="false">张</string>
+    <string name="k_ge_text" translatable="false">个</string>
+    <string name="k_picture_text" translatable="false">图片</string>
+    <string name="k_video_text" translatable="false">视频</string>
+    <string name="k_seconds_text">秒</string>
+    <string name="k_seconds_eng_text">s</string>
+    <string name="k_duration_end_text">"</string>
+    <string name="k_permission_audio_record_text" translatable="false">请前往手机设置打开录音权限</string>
+    <string name="k_audio_record_min_tie" translatable="false">录音时长过短</string>
+    <string name="k_replace_img_text">替换图片</string>
+    <string name="k_loading_text">加载中...</string>
+    <string name="k_file_size_too_large_text">文件大小超过上传限制</string>
+    <string name="k_recording_too_short_text" translatable="false">录制时间太短</string>
+    <string name="k_select_current_video_text" translatable="false">确定使用当前录制的视频？</string>
+    <string name="k_default_zero_text" translatable="false">0</string>
+    <string name="k_is_loading_text" translatable="false">加载数据中...</string>
+    <string name="k_login_title_text">企业精准化学习平台</string>
+    <string name="k_login_title2_text" translatable="false">在线学习平台</string>
+    <string name="k_password_login_text">密码登录</string>
+    <string name="k_code_login_text">验证码登录</string>
+    <string name="k_register_text">注册</string>
+    <string name="k_enterprise_register_text" tools:ignore="ExtraTranslation">企业注册</string>
+    <string name="k_enterprise_register_text_new" tools:ignore="ExtraTranslation">企业注册（企业管理员）</string>
+    <string name="k_next_text">下一步</string>
+    <string name="k_verification_code_send_text">验证码已发送</string>
+    <string name="k_get_verification_code_fail_text">获取验证码失败，请重试</string>
+    <string name="k_verification_code_length_m_6_text">验证码长度不能小于6位</string>
+    <string name="k_account_not_registered_text">该手机号未注册，请先注册</string>
+    <string name="k_select_enterprise_text">请选择要进入的公司</string>
+    <string name="k_select_company_text">选择公司</string>
+    <string name="k_register_tip_text">请填写真实信息，让您的同事更容易找到你(必填)。</string>
+    <string name="k_name_text">姓名</string>
+    <string name="k_input_pls_text">请输入</string>
+    <string name="k_company_name_text">企业名称</string>
+    <string name="k_input_company_name_m_30_text">企业全称，如：酷渲（北京）科技有限公司</string>
+    <string name="k_the_position_text">职务</string>
+    <string name="k_select_pls_text">请选择</string>
+    <string name="k_company_scale_text">企业规模</string>
+    <string name="k_industry_text">所属行业</string>
+    <string name="k_places_of_city_text">所在城市</string>
+    <string name="k_register_form_title">申请试用</string>
+    <string name="k_getting_scale_data_text">正在获取企业规模...</string>
+    <string name="k_getting_address_data_text">正在获取所在城市...</string>
+    <string name="k_getting_position_data_text">正在获取职务信息...</string>
+    <string name="k_getting_industry_data_text">正在获取所属行业...</string>
+    <string name="k_register_success_text">注册成功</string>
+    <string name="k_register_fail_text">注册失败</string>
+    <string name="k_verification_code_invalid_text">验证码已失效，请重新获取验证码</string>
+    <string name="k_name_empty_text">请输入姓名</string>
+    <string name="k_position_empty_text">请选择职务</string>
+    <string name="k_company_name_empty_text">请输入企业名称</string>
+    <string name="k_scale_empty_text">请选择企业规模</string>
+    <string name="k_industry_empty_text">请选择所属行业</string>
+    <string name="k_city_empty_text">请选择所在城市</string>
+    <string name="k_scan_code_to_join_group_text">扫一扫，快速加入我们的企业/组织/团队</string>
+    <string name="k_scan_code_to_down_load_text">请扫描上方二维码或复制链接进行下载</string>
+    <string name="k_share_to_wechat_text">分享至微信</string>
+    <string name="k_share_to_ding_text">分享至钉钉</string>
+    <string name="k_save_qr_code_text">保存二维码</string>
+    <string name="k_qr_code_link_invite_text">二维码、链接邀请</string>
+    <string name="k_making_qr_code_text">正在生成二维码...</string>
+    <string name="k_save_img_to_text">图片已经保存到</string>
+    <string name="k_save_img_fail_text">图片保存失败</string>
+    <string name="k_get_verification_code_first_text">请先获取验证码</string>
+    <string name="k_login_agree_text">我已阅读并同意</string>
+    <string name="k_part_of_text">的</string>
+    <string name="k_and_text">和</string>
+    <string name="k_policy_text">《隐私政策》</string>
+    <string name="k_private_text">《用户协议》</string>
+    <string name="k_private_user_text">用户协议</string>
+    <string name="k_private_policy_text">隐私政策</string>
+    <string name="k_server_and_policy_text">服务协议和隐私政策</string>
+    <string name="k_app_update_text">发现新版本</string>
+    <string name="k_update_now_text">立即更新</string>
+    <string name="k_next_time_text">下次再说</string>
+    <string name="k_downloading_text">正在下载</string>
+    <string name="k_default_downloading_text">正在下载 0%</string>
+    <string name="k_download_completed_text">下载完成</string>
+    <string name="k_download_failed_text">下载更新包失败</string>
+    <string name="k_version_label">版本：</string>
+    <string name="k_version_en_text">v</string>
+    <string name="k_update_time_label">更新时间：</string>
+    <string name="k_update_desc_label">功能说明：</string>
+    <string name="k_new_line_text">\n</string>
+    <string name="k_sure_use_this_config_text">确定使用当前配置吗？</string>
+    <string name="k_photo_album_text" translatable="false">相册</string>
+    <string name="k_config_server_info_text" translatable="false">配置服务器信息</string>
+    <string name="k_unrecognized_qr_code_text" translatable="false">未识别的图片</string>
+    <string name="k_scan_config_text" translatable="false">扫码登录</string>
+    <string name="k_scan_guide_btm_text">请登录PC端首页或联系企业管理员 获取企业登录识别码</string>
+    <string name="k_scan_qr_code_to_config_text" translatable="false">扫描企业登录识别码</string>
+    <string name="k_server_config_error_text" translatable="false">配置信息错误</string>
+    <string name="k_policy_part1_text">请您务必审慎阅读、充分理解《用户协议》和《隐私政策》的条款，包括但不限于：为了向您课程学习、培训任务等服务，我们需要收集您的设备信息、操作日志等个人信息。您可以在“设置\"中查看、变更、删除个人信息并管理你的授权。</string>
+    <string name="k_policy_part2_start_text">您可阅读</string>
+    <string name="k_policy_part2_end_text">了解详细信息。如你同意，请点击\"同意“开始接受我们的服务。</string>
+    <string name="k_stop_use_text">暂不使用</string>
+    <string name="k_agree_text">同意</string>
+    <string name="k_share_success_text">分享成功</string>
+    <string name="k_share_fail_text">分享失败</string>
+    <string name="k_share_cancel_text">已取消分享</string>
+    <string name="k_we_chat_text">微信</string>
+    <string name="k_we_chat_moment_text">朋友圈</string>
+    <string name="k_ding_ding_text">钉钉</string>
+    <string name="k_not_found_wechat_text">没有安装微信，请先安装</string>
 
-    <string name="CODE_1001" translatable="false">人员数量不匹配</string>
-    <string name="CODE_1002" translatable="false">请勿重复提交</string>
-    <string name="CODE_2001" translatable="false">无效的token</string>
-    <string name="CODE_E_4001" translatable="false">资源不存在</string>
-    <string name="CODE_P_4001" translatable="false">资源不存在</string>
-    <string name="CODE_4003" translatable="false">该课程不可见</string>
-    <string name="CODE_503001" translatable="false">课程被任务引用</string>
-    <string name="CODE_503003" translatable="false">未查询到微课</string>
-    <string name="CODE_503004" translatable="false">该微课已经添加过资源</string>
-    <string name="CODE_503005" translatable="false">资源超过30个</string>
-    <string name="CODE_503006" translatable="false">查询微课已经被删除</string>
-    <string name="CODE_537001" translatable="false">课程包订单仅支持PC端查看</string>
-    <string name="CODE_538001" translatable="false">该公告不存在</string>
-    <string name="CODE_503010" translatable="false">抱歉，该课程已下架</string>
-    <string name="CODE_560002" translatable="false">商品不存在</string>
-    <string name="CODE_560004" translatable="false">订单记录不存在</string>
-    <string name="CODE_560005" translatable="false">身份验证失败</string>
-    <string name="CODE_560007" translatable="false">没有权限兑换该商品</string>
-    <string name="CODE_560008" translatable="false">已兑换过该商品</string>
-    <string name="CODE_560009" translatable="false">该商品库存不足</string>
-    <string name="CODE_560010" translatable="false">剩余积分不足兑换该商品</string>
-    <string name="CODE_560011" translatable="false">该商品已下架</string>
-    <string name="CODE_560012" translatable="false">该商品已过期</string>
-    <string name="CODE_540001" translatable="false">不是合理的手机号</string>
-    <string name="CODE_540002" translatable="false">手机号长度不正确</string>
-    <string name="CODE_502012" translatable="false">部分试题已被删除，试卷详情无法加载</string>
-    <string name="CODE_542008" translatable="false">学习项目资源加载失败</string>
-    <string name="CODE_542007" translatable="false">您暂时无权观看该课程，如需观看，请联系管理员授权</string>
-    <string name="CODE_542009" translatable="false">您尚未报名成功，请报名后再签到</string>
-    <string name="CODE_515001" translatable="false">实操已被审批，请勿重复提交</string>
-    <string name="CODE_501004" translatable="false">课程数量超出范围</string>
-    <string name="CODE_542001" translatable="false">项目名称重复，请重新输入</string>
-    <string name="CODE_568006" translatable="false">服务器繁忙，请稍后再试</string>
-    <string name="CODE_509002" translatable="false">用户不存在</string>
-    <string name="CODE_509003" translatable="false">企业不存在</string>
-    <string name="CODE_509005" translatable="false">手机号未绑定用户</string>
-    <string name="CODE_509006" translatable="false">手机号被多个用户绑定</string>
-    <string name="CODE_509007" translatable="false">用户密码未设置</string>
-    <string name="CODE_509008" translatable="false">原密码错误</string>
-    <string name="CODE_509009">验证码发送失败</string>
-    <string name="CODE_509011">验证码失效</string>
-    <string name="CODE_509010">验证码不正确</string>
-    <string name="CODE_521010">验证码不正确</string>
-    <string name="CODE_572001">手机号非法</string>
-    <string name="CODE_572002">短信发送频率超出限制</string>
-    <string name="CODE_521009" translatable="false">手机号已被注册</string>
-    <string name="CODE_521004">没有可用的企业</string>
-    <string name="CODE_5001" translatable="false">系统业务内部异常,请联系管理员</string>
-    <string name="CODE_521006">不支持多端登录</string>
-    <string name="CODE_521008">密码错误</string>
-    <string name="CODE_521001">企业不存在</string>
-    <string name="CODE_521002">企业正在初始化</string>
-    <string name="CODE_521003">企业已冻结</string>
-    <string name="CODE_521005">账号无登录权限</string>
-    <string name="CODE_521007">没有设置密码</string>
-    <string name="CODE_521011">验证码已失效</string>
-    <string name="CODE_509013">已绑定手机号，请勿重复绑定</string>
-    <string name="CODE_509014">手机号已绑定其他用户</string>
-    <string name="CODE_P_509015">账号未注册</string>
-    <string name="CODE_E_509015">账号未注册</string>
-    <string name="CODE_521012">账号未注册</string>
-    <string name="CODE_521018">暂未查询到你注册的企业</string>
-    <string name="CODE_521019">企业名称校验请求次数超过限制</string>
-    <string name="CODE_521014">该手机号已注册为当前企业用户</string>
-    <string name="CODE_521015">企业已开通</string>
-    <string name="CODE_521013">登录失败，请稍后重试</string>
-    <string name="CODE_521020">您的账号未授权</string>
-    <string name="CODE_521021">姓名格式不合法，不能包含数字或特殊符号</string>
-    <string name="CODE_521023">请输入正确的手机号或邮箱</string>
-    <string name="CODE_521026">用户手机号未激活，请使用验证码登录</string>
-    <string name="CODE_521027">用户邮箱未激活，请使用验证码登录</string>
-    <string name="other_error">请求失败，请稍后重试</string>
-    <string name="can_not_open_file_chooser_text">无法打开文件预览</string>
-    <string name="failed_to_upload_file_text">上传文件失败</string>
-    <string name="take_a_photo_text" translatable="false">拍照</string>
-    <string name="recording_text" translatable="false">录像</string>
-    <string name="app_down_load_url_text">https://www.pgyer.com/kxy_android</string>
-    <string name="is_latest_version_text">当前已是最新版本</string>
-    <string name="download_apk_fail_text">下载安装包失败</string>
-    <string name="upgrade_app_text">应用升级</string>
-    <string name="checking_update_text">正在检查更新...</string>
-    <string name="pls_agree_policy_after_login_text">请勾选同意后再进行登录</string>
-    <string name="title_rs_login">请选择站点</string>
-    <string name="current_site_rs_dialog">当前站点：</string>
-    <string name="switch_sites">切换站点</string>
-    <string name="file_time_too_large_text">视频时长超过上传限制</string>
-    <string name="share_title_dialog">分享</string>
+    <string name="k_CODE_1001" translatable="false">人员数量不匹配</string>
+    <string name="k_CODE_1002" translatable="false">请勿重复提交</string>
+    <string name="k_CODE_2001" translatable="false">无效的token</string>
+    <string name="k_CODE_E_4001" translatable="false">资源不存在</string>
+    <string name="k_CODE_P_4001" translatable="false">资源不存在</string>
+    <string name="k_CODE_4003" translatable="false">该课程不可见</string>
+    <string name="k_CODE_503001" translatable="false">课程被任务引用</string>
+    <string name="k_CODE_503003" translatable="false">未查询到微课</string>
+    <string name="k_CODE_503004" translatable="false">该微课已经添加过资源</string>
+    <string name="k_CODE_503005" translatable="false">资源超过30个</string>
+    <string name="k_CODE_503006" translatable="false">查询微课已经被删除</string>
+    <string name="k_CODE_537001" translatable="false">课程包订单仅支持PC端查看</string>
+    <string name="k_CODE_538001" translatable="false">该公告不存在</string>
+    <string name="k_CODE_503010" translatable="false">抱歉，该课程已下架</string>
+    <string name="k_CODE_560002" translatable="false">商品不存在</string>
+    <string name="k_CODE_560004" translatable="false">订单记录不存在</string>
+    <string name="k_CODE_560005" translatable="false">身份验证失败</string>
+    <string name="k_CODE_560007" translatable="false">没有权限兑换该商品</string>
+    <string name="k_CODE_560008" translatable="false">已兑换过该商品</string>
+    <string name="k_CODE_560009" translatable="false">该商品库存不足</string>
+    <string name="k_CODE_560010" translatable="false">剩余积分不足兑换该商品</string>
+    <string name="k_CODE_560011" translatable="false">该商品已下架</string>
+    <string name="k_CODE_560012" translatable="false">该商品已过期</string>
+    <string name="k_CODE_540001" translatable="false">不是合理的手机号</string>
+    <string name="k_CODE_540002" translatable="false">手机号长度不正确</string>
+    <string name="k_CODE_502012" translatable="false">部分试题已被删除，试卷详情无法加载</string>
+    <string name="k_CODE_542008" translatable="false">学习项目资源加载失败</string>
+    <string name="k_CODE_542007" translatable="false">您暂时无权观看该课程，如需观看，请联系管理员授权</string>
+    <string name="k_CODE_542009" translatable="false">您尚未报名成功，请报名后再签到</string>
+    <string name="k_CODE_515001" translatable="false">实操已被审批，请勿重复提交</string>
+    <string name="k_CODE_501004" translatable="false">课程数量超出范围</string>
+    <string name="k_CODE_542001" translatable="false">项目名称重复，请重新输入</string>
+    <string name="k_CODE_568006" translatable="false">服务器繁忙，请稍后再试</string>
+    <string name="k_CODE_509002" translatable="false">用户不存在</string>
+    <string name="k_CODE_509003" translatable="false">企业不存在</string>
+    <string name="k_CODE_509005" translatable="false">手机号未绑定用户</string>
+    <string name="k_CODE_509006" translatable="false">手机号被多个用户绑定</string>
+    <string name="k_CODE_509007" translatable="false">用户密码未设置</string>
+    <string name="k_CODE_509008" translatable="false">原密码错误</string>
+    <string name="k_CODE_509009">验证码发送失败</string>
+    <string name="k_CODE_509011">验证码失效</string>
+    <string name="k_CODE_509010">验证码不正确</string>
+    <string name="k_CODE_521010">验证码不正确</string>
+    <string name="k_CODE_572001">手机号非法</string>
+    <string name="k_CODE_572002">短信发送频率超出限制</string>
+    <string name="k_CODE_521009" translatable="false">手机号已被注册</string>
+    <string name="k_CODE_521004">没有可用的企业</string>
+    <string name="k_CODE_5001" translatable="false">系统业务内部异常,请联系管理员</string>
+    <string name="k_CODE_521006">不支持多端登录</string>
+    <string name="k_CODE_521008">密码错误</string>
+    <string name="k_CODE_521001">企业不存在</string>
+    <string name="k_CODE_521002">企业正在初始化</string>
+    <string name="k_CODE_521003">企业已冻结</string>
+    <string name="k_CODE_521005">账号无登录权限</string>
+    <string name="k_CODE_521007">没有设置密码</string>
+    <string name="k_CODE_521011">验证码已失效</string>
+    <string name="k_CODE_509013">已绑定手机号，请勿重复绑定</string>
+    <string name="k_CODE_509014">手机号已绑定其他用户</string>
+    <string name="k_CODE_P_509015">账号未注册</string>
+    <string name="k_CODE_E_509015">账号未注册</string>
+    <string name="k_CODE_521012">账号未注册</string>
+    <string name="k_CODE_521018">暂未查询到你注册的企业</string>
+    <string name="k_CODE_521019">企业名称校验请求次数超过限制</string>
+    <string name="k_CODE_521014">该手机号已注册为当前企业用户</string>
+    <string name="k_CODE_521015">企业已开通</string>
+    <string name="k_CODE_521013">登录失败，请稍后重试</string>
+    <string name="k_CODE_521020">您的账号未授权</string>
+    <string name="k_CODE_521021">姓名格式不合法，不能包含数字或特殊符号</string>
+    <string name="k_CODE_521023">请输入正确的手机号或邮箱</string>
+    <string name="k_CODE_521026">用户手机号未激活，请使用验证码登录</string>
+    <string name="k_CODE_521027">用户邮箱未激活，请使用验证码登录</string>
+    <string name="k_other_error">请求失败，请稍后重试</string>
+    <string name="k_can_not_open_file_chooser_text">无法打开文件预览</string>
+    <string name="k_failed_to_upload_file_text">上传文件失败</string>
+    <string name="k_take_a_photo_text" translatable="false">拍照</string>
+    <string name="k_recording_text" translatable="false">录像</string>
+    <string name="k_app_down_load_url_text">https://www.pgyer.com/kxy_android</string>
+    <string name="k_is_latest_version_text">当前已是最新版本</string>
+    <string name="k_download_apk_fail_text">下载安装包失败</string>
+    <string name="k_upgrade_app_text">应用升级</string>
+    <string name="k_checking_update_text">正在检查更新...</string>
+    <string name="k_pls_agree_policy_after_login_text">请勾选同意后再进行登录</string>
+    <string name="k_title_rs_login">请选择站点</string>
+    <string name="k_current_site_rs_dialog">当前站点：</string>
+    <string name="k_switch_sites">切换站点</string>
+    <string name="k_file_time_too_large_text">视频时长超过上传限制</string>
+    <string name="k_share_title_dialog">分享</string>
 </resources>

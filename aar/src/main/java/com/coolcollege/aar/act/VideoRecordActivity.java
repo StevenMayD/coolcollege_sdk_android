@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -80,7 +79,7 @@ public class VideoRecordActivity extends SimpleActivity {
 
     @Override
     protected int initLayout() {
-        return R.layout.activity_video_record;
+        return R.layout.k_activity_video_record;
     }
 
     @Override
@@ -91,8 +90,8 @@ public class VideoRecordActivity extends SimpleActivity {
         tvCountDown = getChildRootView().findViewById(R.id.tv_count_down);
 
         tvTexture.setDeviceDimension(getResources().getDisplayMetrics());
-        dp8 = getResources().getDimensionPixelOffset(R.dimen.dp_8);
-        dp12 = getResources().getDimensionPixelOffset(R.dimen.dp_12);
+        dp8 = getResources().getDimensionPixelOffset(R.dimen.k_dp_8);
+        dp12 = getResources().getDimensionPixelOffset(R.dimen.k_dp_12);
         saveDialog = new AppNotifyDialog(this);
         saveDialog.setContentStyle("确定使用当前录制的视频？");
         saveDialog.setCancelable(false);
@@ -224,12 +223,12 @@ public class VideoRecordActivity extends SimpleActivity {
             } else {
                 stopCountDown();
                 rlRecord.setPadding(dp8, dp8, dp8, dp8);
-                ivShape.setImageResource(R.drawable.shape_oval_red_record);
+                ivShape.setImageResource(R.drawable.k_shape_oval_red_record);
             }
         } else {
             startCountDown();
             rlRecord.setPadding(dp12, dp12, dp12, dp12);
-            ivShape.setImageResource(R.drawable.shape_rectangle_red_stop);
+            ivShape.setImageResource(R.drawable.k_shape_rectangle_red_stop);
         }
     }
 
@@ -254,7 +253,7 @@ public class VideoRecordActivity extends SimpleActivity {
         myHandler.removeCallbacksAndMessages(null);
         recorder.stopRecordingVideo();
         rlRecord.setPadding(dp8, dp8, dp8, dp8);
-        ivShape.setImageResource(R.drawable.shape_oval_red_record);
+        ivShape.setImageResource(R.drawable.k_shape_oval_red_record);
         tvCountDown.setText(countDown + "s");
     }
 

@@ -66,7 +66,7 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
 
     @Override
     protected int initLayout() {
-        return R.layout.activity_media_selector;
+        return R.layout.k_activity_media_selector;
     }
 
     @Override
@@ -74,8 +74,8 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
         rvList = findViewById(R.id.rv_list);
         flShadow = findViewById(R.id.fl_shadow);
 
-        showAnim = AnimationUtils.loadAnimation(this, R.anim.show_anim);
-        hideAnim = AnimationUtils.loadAnimation(this, R.anim.hide_anim);
+        showAnim = AnimationUtils.loadAnimation(this, R.anim.k_show_anim);
+        hideAnim = AnimationUtils.loadAnimation(this, R.anim.k_hide_anim);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         rvList.setLayoutManager(gridLayoutManager);
 
@@ -401,7 +401,7 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
 
     @Override
     protected void updateTitle() {
-        titleBar.setTitleRightPic(R.mipmap.ic_arrow_down_white);
+        titleBar.setTitleRightPic(R.mipmap.k_ic_arrow_down_white);
     }
 
     @Override
@@ -476,11 +476,11 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
             if (folderListPop.isShowing()) {
                 flShadow.setVisibility(View.VISIBLE);
                 flShadow.startAnimation(showAnim);
-                titleBar.setTitleRightPic(R.mipmap.ic_arrow_up_white);
+                titleBar.setTitleRightPic(R.mipmap.k_ic_arrow_up_white);
             } else {
                 flShadow.setVisibility(View.VISIBLE);
                 flShadow.startAnimation(hideAnim);
-                titleBar.setTitleRightPic(R.mipmap.ic_arrow_down_white);
+                titleBar.setTitleRightPic(R.mipmap.k_ic_arrow_down_white);
             }
         }
     }

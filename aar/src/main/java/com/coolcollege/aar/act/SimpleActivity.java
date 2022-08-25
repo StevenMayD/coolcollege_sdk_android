@@ -3,7 +3,6 @@ package com.coolcollege.aar.act;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.text.TextUtils;
@@ -51,7 +50,7 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.k_activity_base);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         initStatusBar();
@@ -110,7 +109,7 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
     }
 
     protected final void setStatusBarMainColor() {
-        int mainColor = getResources().getColor(R.color.main_color);
+        int mainColor = getResources().getColor(R.color.k_main_color);
         if (mainColor != 0) {
             statusBar.setBackgroundColor(mainColor);
         }
@@ -223,20 +222,20 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
     protected final void changeTitleStyle(String title, String right) {
         titleBar.setTitle(title);
         if (styleMode() == DARK_STYLE) {
-            titleBar.setLeftPic(R.mipmap.ic_back);
-            titleBar.setTitleColor(R.color.white_ff);
-            titleBar.setRightTextColor(R.color.white_ff);
+            titleBar.setLeftPic(R.mipmap.k_ic_back);
+            titleBar.setTitleColor(R.color.k_white_ff);
+            titleBar.setRightTextColor(R.color.k_white_ff);
         } else if (styleMode() == LIGHT_STYLE) {
-            titleBar.setLeftPic(R.mipmap.ic_back_black);
-            titleBar.setRightPic(R.mipmap.ic_close_black);
-            titleBar.setTitleColor(R.color.black_26);
-            titleBar.setRightTextColor(R.color.black_26);
+            titleBar.setLeftPic(R.mipmap.k_ic_back_black);
+            titleBar.setRightPic(R.mipmap.k_ic_close_black);
+            titleBar.setTitleColor(R.color.k_black_26);
+            titleBar.setRightTextColor(R.color.k_black_26);
         }
         if (useMainColor()) {
             titleBar.setBackgroundMainColor();
             setStatusBarMainColor();
         } else {
-            titleBar.setRootViewBg(R.color.main_blue);
+            titleBar.setRootViewBg(R.color.k_main_blue);
         }
         titleBar.isShowLeft(isShowLeft());
         titleBar.isShowRightPic(isShowRightPic());
@@ -280,11 +279,11 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
     }
 
     protected int statusBarColor() {
-        return R.color.white;
+        return R.color.k_white;
     }
 
     protected int titleTextColor() {
-        return R.color.white;
+        return R.color.k_white;
     }
 
     protected int styleMode() {
@@ -347,7 +346,7 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
         if (resourceId > 0) {
             statusBarHeight = getResources().getDimensionPixelOffset(resourceId);
         } else {
-            statusBarHeight = (int) getResources().getDimension(R.dimen.status_bar_h25);
+            statusBarHeight = (int) getResources().getDimension(R.dimen.k_status_bar_h25);
         }
 
         ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
@@ -363,11 +362,11 @@ public abstract class SimpleActivity extends SupportActivity implements IBaseVie
         } else {
             immersionBar.statusBarDarkFont(true);
         }
-        immersionBar.flymeOSStatusBarFontColor(R.color.white_ff);
+        immersionBar.flymeOSStatusBarFontColor(R.color.k_white_ff);
         if (useMainColor()) {
             immersionBar.statusBarColor(android.R.color.transparent);
         } else {
-            immersionBar.statusBarColor(R.color.main_color);
+            immersionBar.statusBarColor(R.color.k_main_color);
         }
         immersionBar.navigationBarColor(statusBarColor());
         immersionBar.init();

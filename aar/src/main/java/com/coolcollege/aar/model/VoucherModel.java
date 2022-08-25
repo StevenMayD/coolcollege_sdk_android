@@ -14,7 +14,7 @@ public class VoucherModel {
 
     public <T> void VoucherModel(String accessToken, String enterprise, String file_name, RawResponseCallback<T> callback){
         HashMap<String, String> map = ParameterUtils.genericParams("file_name", file_name);
-        String url = "https://coolapi.coolcollege.cn/enterprise-api/v2/"+ enterprise +"/ticket?access_token=" + accessToken;
+        String url = "https://coolapi.coolcollege.cn/knowledge-api/v2/"+ enterprise +"/ticket?access_token=" + accessToken;
         RetrofitHelper.get().doRawPostByJson(url, map, callback);
     }
 

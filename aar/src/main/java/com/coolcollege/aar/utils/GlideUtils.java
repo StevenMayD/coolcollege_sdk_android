@@ -85,8 +85,8 @@ public class GlideUtils {
         Glide.with(Options.get())
                 .asBitmap()
                 .load(url)
-                .placeholder(R.mipmap.ic_avatar_placeholder)
-                .error(R.mipmap.ic_avatar_placeholder)
+                .placeholder(R.mipmap.k_ic_avatar_placeholder)
+                .error(R.mipmap.k_ic_avatar_placeholder)
                 .transform(new CircleCrop())
                 .centerCrop()
                 .into(view);
@@ -97,8 +97,8 @@ public class GlideUtils {
         Glide.with(Options.get())
                 .asBitmap()
                 .load(url)
-                .placeholder(R.mipmap.ic_avatar_placeholder)
-                .error(R.mipmap.ic_avatar_placeholder)
+                .placeholder(R.mipmap.k_ic_avatar_placeholder)
+                .error(R.mipmap.k_ic_avatar_placeholder)
                 .transform(new CircleCrop())
                 .centerCrop()
                 .into(view);
@@ -109,35 +109,35 @@ public class GlideUtils {
                 .asBitmap()
                 .load(url)
 //                .apply(requestOptions)
-                .placeholder(R.mipmap.ic_placeholder)
-                .error(R.mipmap.ic_placeholder)
+                .placeholder(R.mipmap.k_ic_placeholder)
+                .error(R.mipmap.k_ic_placeholder)
                 .centerCrop()
                 .into(view);
     }
 
     public static void displayRoundPic(String url, ImageView view) {
-        RoundedCorners roundedCorners = new RoundedCorners(Options.get().getResources().getDimensionPixelOffset(R.dimen.dp_5));
+        RoundedCorners roundedCorners = new RoundedCorners(Options.get().getResources().getDimensionPixelOffset(R.dimen.k_dp_5));
         RequestOptions transform = new RequestOptions().transform(new CenterCrop(), roundedCorners);
 
         Glide.with(Options.get())
                 .asBitmap()
                 .load(url)
                 .apply(transform)
-                .placeholder(R.mipmap.ic_placeholder)
-                .error(R.mipmap.ic_placeholder)
+                .placeholder(R.mipmap.k_ic_placeholder)
+                .error(R.mipmap.k_ic_placeholder)
                 .into(view);
     }
 
     public static void displayRoundPic(int resId, ImageView view) {
-        RoundedCorners roundedCorners = new RoundedCorners(Options.get().getResources().getDimensionPixelOffset(R.dimen.dp_5));
+        RoundedCorners roundedCorners = new RoundedCorners(Options.get().getResources().getDimensionPixelOffset(R.dimen.k_dp_5));
         RequestOptions transform = new RequestOptions().transform(new CenterCrop(), roundedCorners);
 
         Glide.with(Options.get())
                 .asBitmap()
                 .load(resId)
                 .apply(transform)
-                .placeholder(R.mipmap.ic_placeholder)
-                .error(R.mipmap.ic_placeholder)
+                .placeholder(R.mipmap.k_ic_placeholder)
+                .error(R.mipmap.k_ic_placeholder)
                 .into(view);
     }
 
@@ -149,8 +149,8 @@ public class GlideUtils {
                 .asBitmap()
                 .load(url)
                 .apply(transform)
-                .placeholder(R.mipmap.ic_placeholder)
-                .error(R.mipmap.ic_placeholder)
+                .placeholder(R.mipmap.k_ic_placeholder)
+                .error(R.mipmap.k_ic_placeholder)
                 .into(view);
     }
 

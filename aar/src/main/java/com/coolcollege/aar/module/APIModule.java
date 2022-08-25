@@ -377,7 +377,7 @@ public class APIModule {
     private void showLoading (Activity activity) {
         //加载页面
         LayoutInflater inflater = activity.getLayoutInflater();// 将XMl文件内容转换成实例
-        View view1 = inflater.inflate(R.layout.dialog_loading, null);
+        View view1 = inflater.inflate(R.layout.k_dialog_loading, null);
         dialog = new Dialog(activity);
         dialog.setContentView(view1);
         dialog.show();

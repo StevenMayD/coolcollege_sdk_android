@@ -18,7 +18,7 @@ public class AppProgressDialog extends BaseDialog {
 
     @Override
     protected int initLayout() {
-        return R.layout.dialog_app_progress;
+        return R.layout.k_dialog_app_progress;
     }
 
     @Override

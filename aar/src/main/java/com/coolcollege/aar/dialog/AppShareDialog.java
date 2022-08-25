@@ -46,7 +46,7 @@ public class AppShareDialog extends BaseDialog {
 
     @Override
     protected int initLayout() {
-        return R.layout.layout_app_share_dialog;
+        return R.layout.k_layout_app_share_dialog;
     }
 
     @Override
@@ -101,13 +101,13 @@ public class AppShareDialog extends BaseDialog {
 
     @Override
     protected int windowAnim() {
-        return R.style.dialogBtm2TopAnim;
+        return R.style.k_dialogBtm2TopAnim;
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected Drawable windowBgDrawable() {
-        return getContext().getResources().getDrawable(R.drawable.shape_white_top_round_5);
+        return getContext().getResources().getDrawable(R.drawable.k_shape_white_top_round_5);
     }
 
     public void shareCode(ShareParams item, Bitmap shareBitmap) {

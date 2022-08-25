@@ -40,7 +40,7 @@ public class FolderListAdapter extends RecycleBaseAdapter<String, FolderListAdap
             GlideUtils.displayNormalPic(list.get(0).path, holder.ivPic);
             holder.tvCount.setText("(" + list.size() + ")");
         } else {
-            holder.ivPic.setImageResource(R.mipmap.ic_placeholder);
+            holder.ivPic.setImageResource(R.mipmap.k_ic_placeholder);
             holder.tvCount.setText("");
         }
 
@@ -50,7 +50,7 @@ public class FolderListAdapter extends RecycleBaseAdapter<String, FolderListAdap
     @NonNull
 //    @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflateLayout(R.layout.item_folder, parent));
+        return new MyViewHolder(inflateLayout(R.layout.k_item_folder, parent));
     }
 
     static class MyViewHolder extends RecycleBaseHolder {

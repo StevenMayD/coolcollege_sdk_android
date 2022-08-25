@@ -14,7 +14,7 @@ public class OSSConfigModel {
 
     public <T> void OSSConfigModel(String accessToken, RawResponseCallback<T> callback){
         HashMap<String, String> map = ParameterUtils.genericParams("access_token", accessToken);
-        String url = "https://coolapi.coolcollege.cn/enterprise-api/oss/config";
+        String url = "https://coolapi.coolcollege.cn/knowledge-api/oss/config";
         RetrofitHelper.get().doRawGet(url, map, callback);
     }
 

@@ -34,14 +34,14 @@ public class FolderListPop extends PopupWindow {
     }
 
     private void initPop() {
-        View view = View.inflate(context, R.layout.dialog_folder_list, null);
+        View view = View.inflate(context, R.layout.k_dialog_folder_list, null);
         setContentView(view);
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         setFocusable(true);
         setOutsideTouchable(true);
         setBackgroundDrawable(new ColorDrawable());
-        setAnimationStyle(R.style.dialogTop2BtmAnim);
+        setAnimationStyle(R.style.k_dialogTop2BtmAnim);
 
         rvList = view.findViewById(R.id.rv_list);
 

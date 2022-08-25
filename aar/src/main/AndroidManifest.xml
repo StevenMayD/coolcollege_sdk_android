@@ -14,10 +14,10 @@
 
         <activity
             android:name=".act.VideoRecordActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/k_AppTheme"/>
         <activity
             android:name=".act.MediaSelectorActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/k_AppTheme"/>
 <!--        <service-->
 <!--            android:name="com.zlw.main.recorderlib.recorder.RecordService"-->
 <!--            android:enabled="true"-->

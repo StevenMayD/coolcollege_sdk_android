@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/k_white_ff"
+        android:gravity="center"
+        android:paddingTop="@dimen/k_dp_11"
+        android:paddingBottom="@dimen/k_dp_11"
+        android:text="取消"
+        android:textColor="@color/k_black_2d"
+        android:textSize="@dimen/k_sp_15" />
+
+    <TextView
+        android:id="@+id/center_line"
+        style="@style/k_line_v_gray_05" />
+
+    <com.coolcollege.aar.maincolor.TextViewMainColor
+        android:id="@+id/btn_confirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/k_white_ff"
+        android:gravity="center"
+        android:paddingTop="@dimen/k_dp_11"
+        android:paddingBottom="@dimen/k_dp_11"
+        android:text="确定"
+        android:textColor="@color/k_blue_46"
+        android:textSize="@dimen/k_sp_15" />
+
+</LinearLayout>

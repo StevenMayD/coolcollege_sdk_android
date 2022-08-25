@@ -15,20 +15,16 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.Utils;
 import com.coolcollege.aar.bean.AudioRecordBean;
-import com.coolcollege.aar.bean.MediaItemBean;
 import com.coolcollege.aar.bean.NativeEventParams;
 import com.coolcollege.aar.bean.PickImgBean;
 import com.coolcollege.aar.bean.PickVideoBean;
-import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
 import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.callback.KXYCallback;
-import com.coolcollege.aar.global.GlobalKey;
 import com.coolcollege.aar.module.APIModule;
 import com.coolcollege.aar.selector.MediaSelector;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

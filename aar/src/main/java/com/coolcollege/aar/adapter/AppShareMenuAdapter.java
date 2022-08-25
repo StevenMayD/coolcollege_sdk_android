@@ -32,12 +32,12 @@ public class AppShareMenuAdapter extends RecycleBaseAdapter<ShareParams, AppShar
     private int getPicFromType(int type) {
         switch (type) {
             case GlobalKey.WE_CHAT:
-                return R.mipmap.ic_share_wechat;
+                return R.mipmap.k_ic_share_wechat;
             case GlobalKey.DING_DING:
-                return R.mipmap.ic_share_ding;
+                return R.mipmap.k_ic_share_ding;
             case GlobalKey.WE_CHAT_MOMENT:
             default:
-                return R.mipmap.ic_share_moment;
+                return R.mipmap.k_ic_share_moment;
         }
     }
 
@@ -57,7 +57,7 @@ public class AppShareMenuAdapter extends RecycleBaseAdapter<ShareParams, AppShar
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflateLayout(R.layout.item_app_share_menu, parent));
+        return new MyViewHolder(inflateLayout(R.layout.k_item_app_share_menu, parent));
     }
 
     static class MyViewHolder extends RecycleBaseHolder {

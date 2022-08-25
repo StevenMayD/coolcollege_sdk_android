@@ -26,12 +26,12 @@ public abstract class BaseDialog extends AlertDialog {
     private View view;
 
     public BaseDialog(@NonNull Context context) {
-        this(context, R.style.appBaseDialogStyle);
+        this(context, R.style.k_appBaseDialogStyle);
     }
 
     protected BaseDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
-        default_width = context.getResources().getDimensionPixelOffset(R.dimen.dp_260);
+        default_width = context.getResources().getDimensionPixelOffset(R.dimen.k_dp_260);
         initSelf();
         initView();
         initListener();
@@ -66,7 +66,7 @@ public abstract class BaseDialog extends AlertDialog {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     protected Drawable windowBgDrawable() {
-        return getContext().getResources().getDrawable(R.drawable.diaglog_bg);
+        return getContext().getResources().getDrawable(R.drawable.k_diaglog_bg);
     }
 
     protected int windowAnim() {
@@ -88,7 +88,7 @@ public abstract class BaseDialog extends AlertDialog {
             layoutParams.width = defaultWidth();
             layoutParams.height = defaultHeight();
             if (windowAnim() != -1) {
-                layoutParams.windowAnimations = R.style.dialogBtm2TopAnim;
+                layoutParams.windowAnimations = R.style.k_dialogBtm2TopAnim;
             }
             window.setBackgroundDrawable(windowBgDrawable());
 

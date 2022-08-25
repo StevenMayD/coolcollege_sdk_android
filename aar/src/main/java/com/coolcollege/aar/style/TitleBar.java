@@ -147,10 +147,10 @@ public class TitleBar extends FrameLayout
             sDefaultStyle = new TitleBarLightStyle(getContext().getApplicationContext());
         }
 
-        final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
+        final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.k_TitleBar);
 
         // 样式设置
-        switch (array.getInt(R.styleable.TitleBar_barStyle, 0)) {
+        switch (array.getInt(R.styleable.k_TitleBar_barStyle, 0)) {
             case 0x10:
                 mCurrentStyle = new TitleBarLightStyle(getContext());
                 break;
@@ -176,12 +176,12 @@ public class TitleBar extends FrameLayout
         setChildPadding(sDefaultStyle.getChildPadding());
 
         // 标题设置
-        if (array.hasValue(R.styleable.TitleBar_leftTitle)) {
-            setLeftTitle(array.getString(R.styleable.TitleBar_leftTitle));
+        if (array.hasValue(R.styleable.k_TitleBar_leftTitle)) {
+            setLeftTitle(array.getString(R.styleable.k_TitleBar_leftTitle));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_title)) {
-            setTitle(array.getString(R.styleable.TitleBar_title));
+        if (array.hasValue(R.styleable.k_TitleBar_title)) {
+            setTitle(array.getString(R.styleable.k_TitleBar_title));
         } else {
             // 如果当前上下文对象是Activity，就获取Activity的标题
             if (getContext() instanceof Activity) {
@@ -202,56 +202,56 @@ public class TitleBar extends FrameLayout
             }
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightTitle)) {
-            setRightTitle(array.getString(R.styleable.TitleBar_rightTitle), true);
+        if (array.hasValue(R.styleable.k_TitleBar_rightTitle)) {
+            setRightTitle(array.getString(R.styleable.k_TitleBar_rightTitle), true);
         }
 
         // 图标设置
-        if (array.hasValue(R.styleable.TitleBar_leftIcon)) {
-            setLeftIcon(ViewBuilder.getDrawable(getContext(), array.getResourceId(R.styleable.TitleBar_leftIcon, 0)));
+        if (array.hasValue(R.styleable.k_TitleBar_leftIcon)) {
+            setLeftIcon(ViewBuilder.getDrawable(getContext(), array.getResourceId(R.styleable.k_TitleBar_leftIcon, 0)));
         } else {
-            if (array.getBoolean(R.styleable.TitleBar_backButton, mCurrentStyle.getBackIcon() != null)) {
+            if (array.getBoolean(R.styleable.k_TitleBar_backButton, mCurrentStyle.getBackIcon() != null)) {
                 // 显示默认的返回图标
                 setLeftIcon(mCurrentStyle.getBackIcon());
             }
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightIcon)) {
-            setRightIcon(ViewBuilder.getDrawable(getContext(), array.getResourceId(R.styleable.TitleBar_rightIcon, 0)));
+        if (array.hasValue(R.styleable.k_TitleBar_rightIcon)) {
+            setRightIcon(ViewBuilder.getDrawable(getContext(), array.getResourceId(R.styleable.k_TitleBar_rightIcon, 0)));
         }
 
         // 文字颜色设置
-        setLeftColor(array.getColor(R.styleable.TitleBar_leftColor, mCurrentStyle.getLeftColor()));
-        setTitleColor(array.getColor(R.styleable.TitleBar_titleColor, mCurrentStyle.getTitleColor()));
-        setRightColor(array.getColor(R.styleable.TitleBar_rightColor, mCurrentStyle.getRightColor()));
+        setLeftColor(array.getColor(R.styleable.k_TitleBar_leftColor, mCurrentStyle.getLeftColor()));
+        setTitleColor(array.getColor(R.styleable.k_TitleBar_titleColor, mCurrentStyle.getTitleColor()));
+        setRightColor(array.getColor(R.styleable.k_TitleBar_rightColor, mCurrentStyle.getRightColor()));
 
         // 文字大小设置
-        setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_leftSize, (int) mCurrentStyle.getLeftSize()));
-        setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_titleSize, (int) mCurrentStyle.getTitleSize()));
-        setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_rightSize, (int) mCurrentStyle.getRightSize()));
+        setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.k_TitleBar_leftSize, (int) mCurrentStyle.getLeftSize()));
+        setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.k_TitleBar_titleSize, (int) mCurrentStyle.getTitleSize()));
+        setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.k_TitleBar_rightSize, (int) mCurrentStyle.getRightSize()));
 
         // 背景设置
-        if (array.hasValue(R.styleable.TitleBar_leftBackground)) {
-            setLeftBackground(array.getDrawable(R.styleable.TitleBar_leftBackground));
+        if (array.hasValue(R.styleable.k_TitleBar_leftBackground)) {
+            setLeftBackground(array.getDrawable(R.styleable.k_TitleBar_leftBackground));
         } else {
             setLeftBackground(mCurrentStyle.getLeftBackground());
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightBackground)) {
-            setRightBackground(array.getDrawable(R.styleable.TitleBar_rightBackground));
+        if (array.hasValue(R.styleable.k_TitleBar_rightBackground)) {
+            setRightBackground(array.getDrawable(R.styleable.k_TitleBar_rightBackground));
         } else {
             setRightBackground(mCurrentStyle.getRightBackground());
         }
 
         // 分割线设置
-        if (array.hasValue(R.styleable.TitleBar_lineColor)) {
-            setLineDrawable(array.getDrawable(R.styleable.TitleBar_lineColor));
+        if (array.hasValue(R.styleable.k_TitleBar_lineColor)) {
+            setLineDrawable(array.getDrawable(R.styleable.k_TitleBar_lineColor));
         } else {
             setLineDrawable(mCurrentStyle.getLineDrawable());
         }
 
-        setLineVisible(array.getBoolean(R.styleable.TitleBar_lineVisible, mCurrentStyle.isLineVisible()));
-        setLineSize(array.getDimensionPixelSize(R.styleable.TitleBar_lineSize, mCurrentStyle.getLineSize()));
+        setLineVisible(array.getBoolean(R.styleable.k_TitleBar_lineVisible, mCurrentStyle.isLineVisible()));
+        setLineSize(array.getDimensionPixelSize(R.styleable.k_TitleBar_lineSize, mCurrentStyle.getLineSize()));
 
         // 回收TypedArray
         array.recycle();

@@ -150,15 +150,15 @@ public class VODUploadManager {
     private void showProgressDialog(Activity act){
         //加载页面
         LayoutInflater inflater = act.getLayoutInflater();// 将XMl文件内容转换成实例
-        View view1 = inflater.inflate(R.layout.act_dialog, null);
+        View view1 = inflater.inflate(R.layout.k_act_dialog, null);
 
-        tv_dl_pBar = view1.findViewById(R.id.tv_dl_pBar);
+        tv_dl_pBar = view1.findViewById(R.id.k_tv_dl_pBar);
         tv_dl_pBar.setMax(100);
 
-        tv_dl_num = view1.findViewById(R.id.tv_dl_num);
+        tv_dl_num = view1.findViewById(R.id.k_tv_dl_num);
         tv_dl_num.setText("0%");
 
-        TextView tv_dl_cancel = view1.findViewById(R.id.tv_dl_cancel);
+        TextView tv_dl_cancel = view1.findViewById(R.id.k_tv_dl_cancel);
         tv_dl_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -38,8 +38,8 @@ public class MediaSelectorAdapter extends RecycleBaseAdapter<MediaItemBean, Recy
     @SuppressLint("UseCompatLoadingForDrawables")
     public MediaSelectorAdapter(ArrayList<MediaItemBean> list) {
         super(list);
-        normal = context.getResources().getDrawable(R.drawable.cb_mime_normal_shape);
-        selected = context.getResources().getDrawable(R.drawable.cb_mime_selected_shape);
+        normal = context.getResources().getDrawable(R.drawable.k_cb_mime_normal_shape);
+        selected = context.getResources().getDrawable(R.drawable.k_cb_mime_selected_shape);
     }
 
     public void setSelectList(ArrayList<MediaItemBean> selectList) {
@@ -150,14 +150,14 @@ public class MediaSelectorAdapter extends RecycleBaseAdapter<MediaItemBean, Recy
 
         switch (viewType) {
             case ITEM_TYPE_CAMERA:
-                holder = new CameraHolder(inflateLayout(R.layout.item_selector_camera, null));
+                holder = new CameraHolder(inflateLayout(R.layout.k_item_selector_camera, null));
                 break;
             case ITEM_TYPE_VIDEO:
-                holder = new VideoHolder(inflateLayout(R.layout.item_selector_video, null));
+                holder = new VideoHolder(inflateLayout(R.layout.k_item_selector_video, null));
                 break;
             case ITEM_TYPE_IMG:
             default:
-                holder = new ImageHolder(inflateLayout(R.layout.item_selector_img, null));
+                holder = new ImageHolder(inflateLayout(R.layout.k_item_selector_img, null));
                 break;
         }
         return holder;

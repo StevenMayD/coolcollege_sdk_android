@@ -26,8 +26,8 @@ public class TextViewMainColor extends androidx.appcompat.widget.AppCompatTextVi
 
     @Override
     public void setTextColor(int color) {
-        if (color == getResources().getColor(R.color.main_color)) {
-            int mainColor = getResources().getColor(R.color.main_color);
+        if (color == getResources().getColor(R.color.k_main_color)) {
+            int mainColor = getResources().getColor(R.color.k_main_color);
             if (mainColor != 0) {
                 super.setTextColor(mainColor);
             }else {
@@ -42,8 +42,8 @@ public class TextViewMainColor extends androidx.appcompat.widget.AppCompatTextVi
     public void setTextColor(ColorStateList colors) {
         super.setTextColor(colors);
         int currentTextColor = getCurrentTextColor();
-        if (currentTextColor == getResources().getColor(R.color.main_color)) {
-            int mainColor = getResources().getColor(R.color.main_color);
+        if (currentTextColor == getResources().getColor(R.color.k_main_color)) {
+            int mainColor = getResources().getColor(R.color.k_main_color);
             if (mainColor != 0) {
                 super.setTextColor(mainColor);
             }

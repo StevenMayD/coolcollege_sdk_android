@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <declare-styleable name="innerrect">
-        <attr name="inner_width" format="dimension" /><!-- 控制扫描框的宽度 -->
-        <attr name="inner_height" format="dimension" /><!-- 控制扫描框的高度 -->
-        <attr name="inner_margintop" format="dimension" /><!-- 控制扫描框距离顶部的距离 -->
-        <attr name="inner_corner_color" format="color" /><!-- 控制扫描框四角的颜色 -->
-        <attr name="inner_corner_length" format="dimension" /><!-- 控制扫描框四角的长度 -->
-        <attr name="inner_corner_width" format="dimension" /><!-- 控制扫描框四角的宽度 -->
-        <attr name="inner_scan_bitmap" format="reference" /><!-- 控制扫描图 -->
-        <attr name="inner_scan_speed" format="integer" /><!-- 控制扫描速度 -->
-        <attr name="inner_scan_iscircle" format="boolean"/><!-- 控制小圆点是否展示 -->
-    </declare-styleable>
-    <declare-styleable name="TitleBar"  tools:ignore="ResourceName">
+    <declare-styleable name="k_TitleBar"  tools:ignore="ResourceName">
         <!-- 整体样式 -->
         <attr name="barStyle">
             <enum name="light" value="0x10" />
@@ -47,50 +36,5 @@
         <attr name="left_pic" format="reference" />
         <attr name="right_pic" format="reference" />
         <attr name="is_show_btm_line" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="InputEditLayout">
-
-        <attr name="left_pic" />
-        <attr name="right_pic" />
-        <attr name="center_text" />
-        <attr name="center_text_color" format="color" />
-        <attr name="center_text_size" format="integer" />
-        <attr name="hint_text" format="string" />
-        <attr name="hint_text_color" format="color" />
-        <attr name="input_type" format="integer" />
-        <attr name="max_length" format="integer" />
-        <attr name="is_show_right_view" />
-
-    </declare-styleable>
-
-    <declare-styleable name="EmptyLayout">
-
-        <attr name="empty_text" format="string" />
-        <attr name="empty_pic" format="reference" />
-        <attr name="text_size" format="float" />
-        <attr name="text_color" format="color" />
-        <attr name="is_show_text" format="boolean" />
-        <attr name="is_show_pic" format="boolean" />
-
-    </declare-styleable>
-
-    <declare-styleable name="MediaPlayerLayout">
-        <attr name="menu_style" format="enum">
-            <enum name="style_h" value="1" />
-            <enum name="style_v" value="2" />
-        </attr>
-
-    </declare-styleable>
-
-    <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="integer" />
-        <attr name="border_color" format="color" />
-    </declare-styleable>
-
-    <declare-styleable name="SelectItemLayout">
-        <attr name="left_text" format="string" />
-        <attr name="hint_text" />
-
     </declare-styleable>
 </resources>

@@ -69,7 +69,7 @@ public class AudioRecordDialog extends BaseDialog {
     }
 
     public  AudioRecordDialog(@NonNull Context context) {
-        this(context, R.style.appBaseDialogStyle);
+        this(context, R.style.k_appBaseDialogStyle);
     }
 
     protected AudioRecordDialog(@NonNull Context context, int themeResId) {
@@ -82,7 +82,7 @@ public class AudioRecordDialog extends BaseDialog {
 
     @Override
     protected int initLayout() {
-        return R.layout.dialog_audio_record;
+        return R.layout.k_dialog_audio_record;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class AudioRecordDialog extends BaseDialog {
 
     @Override
     protected int windowAnim() {
-        return R.style.dialogBtm2TopAnim;
+        return R.style.k_dialogBtm2TopAnim;
     }
 
     @Override

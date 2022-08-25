@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/k_white_ff">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <FrameLayout
+        android:id="@+id/fl_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/k_black_70"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

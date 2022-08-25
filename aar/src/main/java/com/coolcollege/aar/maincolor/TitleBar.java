@@ -41,14 +41,14 @@ public class TitleBar extends LinearLayout {
     }
 
     private void initAttrs(AttributeSet attrs) {
-        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.k_TitleBar);
 
-        boolean isShowRight = ta.getBoolean(R.styleable.TitleBar_is_show_right_view, false);
-        boolean isShowLeft = ta.getBoolean(R.styleable.TitleBar_is_show_left_view, false);
-        boolean isShowBtmLine = ta.getBoolean(R.styleable.TitleBar_is_show_btm_line, false);
-        Drawable leftPic = ta.getDrawable(R.styleable.TitleBar_left_pic);
-        Drawable rightPic = ta.getDrawable(R.styleable.TitleBar_right_pic);
-        String title = ta.getString(R.styleable.TitleBar_center_text);
+        boolean isShowRight = ta.getBoolean(R.styleable.k_TitleBar_is_show_right_view, false);
+        boolean isShowLeft = ta.getBoolean(R.styleable.k_TitleBar_is_show_left_view, false);
+        boolean isShowBtmLine = ta.getBoolean(R.styleable.k_TitleBar_is_show_btm_line, false);
+        Drawable leftPic = ta.getDrawable(R.styleable.k_TitleBar_left_pic);
+        Drawable rightPic = ta.getDrawable(R.styleable.k_TitleBar_right_pic);
+        String title = ta.getString(R.styleable.k_TitleBar_center_text);
 
         isShowLeft(isShowLeft);
         isShowRightPic(isShowRight);
@@ -61,7 +61,7 @@ public class TitleBar extends LinearLayout {
     }
 
     private void initView() {
-        view = View.inflate(getContext(), R.layout.layout_title_bar, this);
+        view = View.inflate(getContext(), R.layout.k_layout_title_bar, this);
         ivLeft = view.findViewById(R.id.iv_left);
         tvTitle = view.findViewById(R.id.tv_title);
         ivRight = view.findViewById(R.id.iv_right);
@@ -168,7 +168,7 @@ public class TitleBar extends LinearLayout {
     }
 
     public void setBackgroundMainColor() {
-        int mainColor = getResources().getColor(R.color.main_color);
+        int mainColor = getResources().getColor(R.color.k_main_color);
         llRoot.setBackgroundColor(mainColor);
     }
 

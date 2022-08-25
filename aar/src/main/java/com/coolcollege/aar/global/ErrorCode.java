@@ -86,212 +86,212 @@ public class ErrorCode {
 
         switch (code) {
             case CODE_1001:
-                content = Options.get().getString(R.string.CODE_1001);
+                content = Options.get().getString(R.string.k_CODE_1001);
                 break;
             case CODE_1002:
-                content = Options.get().getString(R.string.CODE_1002);
+                content = Options.get().getString(R.string.k_CODE_1002);
                 break;
             case CODE_2001:
-                content = Options.get().getString(R.string.CODE_2001);
+                content = Options.get().getString(R.string.k_CODE_2001);
                 break;
             case CODE_E_4001:
             case CODE_P_4001:
-                content = Options.get().getString(R.string.CODE_P_4001);
+                content = Options.get().getString(R.string.k_CODE_P_4001);
                 break;
             case CODE_4003:
-                content = Options.get().getString(R.string.CODE_4003);
+                content = Options.get().getString(R.string.k_CODE_4003);
                 break;
             case CODE_503001:
-                content = Options.get().getString(R.string.CODE_503001);
+                content = Options.get().getString(R.string.k_CODE_503001);
                 break;
             case CODE_503003:
-                content = Options.get().getString(R.string.CODE_503003);
+                content = Options.get().getString(R.string.k_CODE_503003);
                 break;
             case CODE_503004:
-                content = Options.get().getString(R.string.CODE_503004);
+                content = Options.get().getString(R.string.k_CODE_503004);
                 break;
             case CODE_503005:
-                content = Options.get().getString(R.string.CODE_503005);
+                content = Options.get().getString(R.string.k_CODE_503005);
                 break;
             case CODE_503006:
-                content = Options.get().getString(R.string.CODE_503006);
+                content = Options.get().getString(R.string.k_CODE_503006);
                 break;
             case CODE_537001:
-                content = Options.get().getString(R.string.CODE_537001);
+                content = Options.get().getString(R.string.k_CODE_537001);
                 break;
             case CODE_538001:
-                content = Options.get().getString(R.string.CODE_538001);
+                content = Options.get().getString(R.string.k_CODE_538001);
                 break;
             case CODE_503010:
-                content = Options.get().getString(R.string.CODE_503010);
+                content = Options.get().getString(R.string.k_CODE_503010);
                 break;
             case CODE_560002:
-                content = Options.get().getString(R.string.CODE_560002);
+                content = Options.get().getString(R.string.k_CODE_560002);
                 break;
             case CODE_560004:
-                content = Options.get().getString(R.string.CODE_560004);
+                content = Options.get().getString(R.string.k_CODE_560004);
                 break;
             case CODE_560005:
-                content = Options.get().getString(R.string.CODE_560005);
+                content = Options.get().getString(R.string.k_CODE_560005);
                 break;
             case CODE_560007:
-                content = Options.get().getString(R.string.CODE_560007);
+                content = Options.get().getString(R.string.k_CODE_560007);
                 break;
             case CODE_560008:
-                content = Options.get().getString(R.string.CODE_560008);
+                content = Options.get().getString(R.string.k_CODE_560008);
                 break;
             case CODE_560009:
-                content = Options.get().getString(R.string.CODE_560009);
+                content = Options.get().getString(R.string.k_CODE_560009);
                 break;
             case CODE_560010:
-                content = Options.get().getString(R.string.CODE_560010);
+                content = Options.get().getString(R.string.k_CODE_560010);
                 break;
             case CODE_560011:
-                content = Options.get().getString(R.string.CODE_560011);
+                content = Options.get().getString(R.string.k_CODE_560011);
                 break;
             case CODE_560012:
-                content = Options.get().getString(R.string.CODE_560012);
+                content = Options.get().getString(R.string.k_CODE_560012);
                 break;
             case CODE_540001:
-                content = Options.get().getString(R.string.CODE_540001);
+                content = Options.get().getString(R.string.k_CODE_540001);
                 break;
             case CODE_540002:
-                content = Options.get().getString(R.string.CODE_540002);
+                content = Options.get().getString(R.string.k_CODE_540002);
                 break;
             case CODE_502012:
-                content = Options.get().getString(R.string.CODE_502012);
+                content = Options.get().getString(R.string.k_CODE_502012);
                 break;
             case CODE_542008:
-                content = Options.get().getString(R.string.CODE_542008);
+                content = Options.get().getString(R.string.k_CODE_542008);
                 break;
             case CODE_542007:
-                content = Options.get().getString(R.string.CODE_542007);
+                content = Options.get().getString(R.string.k_CODE_542007);
                 break;
             case CODE_542009:
-                content = Options.get().getString(R.string.CODE_542009);
+                content = Options.get().getString(R.string.k_CODE_542009);
                 break;
             case CODE_515001:
-                content = Options.get().getString(R.string.CODE_515001);
+                content = Options.get().getString(R.string.k_CODE_515001);
                 break;
             case CODE_501004:
-                content = Options.get().getString(R.string.CODE_501004);
+                content = Options.get().getString(R.string.k_CODE_501004);
                 break;
             case CODE_542001:
-                content = Options.get().getString(R.string.CODE_542001);
+                content = Options.get().getString(R.string.k_CODE_542001);
                 break;
             case CODE_568006:
-                content = Options.get().getString(R.string.CODE_568006);
+                content = Options.get().getString(R.string.k_CODE_568006);
                 break;
             case CODE_509002:
-                content = Options.get().getString(R.string.CODE_509002);
+                content = Options.get().getString(R.string.k_CODE_509002);
                 break;
             case CODE_509003:
-                content = Options.get().getString(R.string.CODE_509003);
+                content = Options.get().getString(R.string.k_CODE_509003);
                 break;
             case CODE_509005:
-                content = Options.get().getString(R.string.CODE_509005);
+                content = Options.get().getString(R.string.k_CODE_509005);
                 break;
             case CODE_509006:
-                content = Options.get().getString(R.string.CODE_509006);
+                content = Options.get().getString(R.string.k_CODE_509006);
                 break;
             case CODE_509007:
-                content = Options.get().getString(R.string.CODE_509007);
+                content = Options.get().getString(R.string.k_CODE_509007);
                 break;
             case CODE_509008:
-                content = Options.get().getString(R.string.CODE_509008);
+                content = Options.get().getString(R.string.k_CODE_509008);
                 break;
             case CODE_509009:
-                content = Options.get().getString(R.string.CODE_509009);
+                content = Options.get().getString(R.string.k_CODE_509009);
                 break;
             case CODE_509011:
-                content = Options.get().getString(R.string.CODE_509011);
+                content = Options.get().getString(R.string.k_CODE_509011);
                 break;
             case CODE_509010:
             case CODE_521010:
-                content = Options.get().getString(R.string.CODE_509010);
+                content = Options.get().getString(R.string.k_CODE_509010);
                 break;
             case CODE_572001:
-                content = Options.get().getString(R.string.CODE_572001);
+                content = Options.get().getString(R.string.k_CODE_572001);
                 break;
             case CODE_572002:
-                content = Options.get().getString(R.string.CODE_572002);
+                content = Options.get().getString(R.string.k_CODE_572002);
                 break;
             case CODE_521009:
-                content = Options.get().getString(R.string.CODE_521009);
+                content = Options.get().getString(R.string.k_CODE_521009);
                 break;
             case CODE_521004:
-                content = Options.get().getString(R.string.CODE_521004);
+                content = Options.get().getString(R.string.k_CODE_521004);
                 break;
             case CODE_5001:
-                content = Options.get().getString(R.string.CODE_5001);
+                content = Options.get().getString(R.string.k_CODE_5001);
                 break;
             case CODE_521006:
-                content = Options.get().getString(R.string.CODE_521006);
+                content = Options.get().getString(R.string.k_CODE_521006);
                 break;
             case CODE_521008:
-                content =Options.get().getString(R.string.CODE_521008);
+                content =Options.get().getString(R.string.k_CODE_521008);
                 break;
             case CODE_521001:
-                content = Options.get().getString(R.string.CODE_521001);
+                content = Options.get().getString(R.string.k_CODE_521001);
                 break;
             case CODE_521002:
-                content = Options.get().getString(R.string.CODE_521002);
+                content = Options.get().getString(R.string.k_CODE_521002);
                 break;
             case CODE_521003:
-                content = Options.get().getString(R.string.CODE_521003);
+                content = Options.get().getString(R.string.k_CODE_521003);
                 break;
             case CODE_521005:
-                content = Options.get().getString(R.string.CODE_521005);
+                content = Options.get().getString(R.string.k_CODE_521005);
                 break;
             case CODE_521007:
-                content = Options.get().getString(R.string.CODE_521007);
+                content = Options.get().getString(R.string.k_CODE_521007);
                 break;
             case CODE_521011:
-                content = Options.get().getString(R.string.CODE_521011);
+                content = Options.get().getString(R.string.k_CODE_521011);
                 break;
             case CODE_509013:
-                content = Options.get().getString(R.string.CODE_509013);
+                content = Options.get().getString(R.string.k_CODE_509013);
                 break;
             case CODE_509014:
-                content = Options.get().getString(R.string.CODE_509014);
+                content = Options.get().getString(R.string.k_CODE_509014);
                 break;
             case CODE_P_509015:
             case CODE_E_509015:
             case CODE_521012:
-                content = Options.get().getString(R.string.CODE_521012);
+                content = Options.get().getString(R.string.k_CODE_521012);
                 break;
             case CODE_521018:
-                content = Options.get().getString(R.string.CODE_521018);
+                content = Options.get().getString(R.string.k_CODE_521018);
                 break;
             case CODE_521019:
-                content = Options.get().getString(R.string.CODE_521019);
+                content = Options.get().getString(R.string.k_CODE_521019);
                 break;
             case CODE_521014:
-                content =Options.get().getString(R.string.CODE_521014);
+                content =Options.get().getString(R.string.k_CODE_521014);
                 break;
             case CODE_521015:
-                content = Options.get().getString(R.string.CODE_521015);
+                content = Options.get().getString(R.string.k_CODE_521015);
                 break;
             case CODE_521013:
-                content = Options.get().getString(R.string.CODE_521013);
+                content = Options.get().getString(R.string.k_CODE_521013);
                 break;
             case CODE_521020:
-                content = Options.get().getString(R.string.CODE_521020);
+                content = Options.get().getString(R.string.k_CODE_521020);
                 break;
             case CODE_521021:
-                content = Options.get().getString(R.string.CODE_521021);
+                content = Options.get().getString(R.string.k_CODE_521021);
                 break;
             case CODE_521023:
-                content = Options.get().getString(R.string.CODE_521023);
+                content = Options.get().getString(R.string.k_CODE_521023);
                 break;
             case CODE_521026:
-                content = Options.get().getString(R.string.CODE_521026);
+                content = Options.get().getString(R.string.k_CODE_521026);
                 break;
             case CODE_521027:
-                content = Options.get().getString(R.string.CODE_521027);
+                content = Options.get().getString(R.string.k_CODE_521027);
                 break;
             default:
-                content = Options.get().getString(R.string.other_error);
+                content = Options.get().getString(R.string.k_other_error);
                 break;
         }
         return content;
