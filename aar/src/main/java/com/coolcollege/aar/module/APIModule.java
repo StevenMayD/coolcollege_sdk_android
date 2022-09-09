@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
 import com.coolcollege.aar.R;
+import com.coolcollege.aar.act.QrCodeScanActivity;
 import com.coolcollege.aar.act.VideoRecordActivity;
 import com.coolcollege.aar.bean.AudioRecordBean;
 import com.coolcollege.aar.bean.NativeEventParams;
@@ -55,6 +56,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class APIModule {
 
@@ -116,6 +118,8 @@ public class APIModule {
         } else if ("shareMenu".equals(params.methodName)) { // 分享
             ArrayList<ShareParams> data = NativeDataProvider.genericShareMenuData(params.methodData);
             buildShareDialog(data);
+        } else if ("scan".equals(params.methodName)) { // 扫码
+            scanView();
         }
     }
 
@@ -202,6 +206,24 @@ public class APIModule {
                 Toast.makeText(act, "请前往手机设置打开录像相应的权限", Toast.LENGTH_LONG).show();
             }
         },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE, Permission.RECORD_AUDIO);
+    }
+
+    /** 扫码 */
+    private void scanView() {
+        PermissionManager.checkPermissions(act, new PermissionStateListener() {
+            @Override
+            public void onGranted() {
+                String callbackId = UUID.randomUUID().toString();
+                Intent intent = new Intent(act, QrCodeScanActivity.class);
+                intent.putExtra("CALLBACK_ID", callbackId);
+                act.startActivityForResult(intent, reqCode);
+            }
+
+            @Override
+            public void onDenied() {
+                Toast.makeText(act, "请前往手机设置打开相机的权限", Toast.LENGTH_LONG).show();
+            }
+        }, Permission.CAMERA);
     }
 
     /**

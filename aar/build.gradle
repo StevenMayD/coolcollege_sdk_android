@@ -45,4 +45,6 @@ dependencies {
     api 'com.squareup.retrofit2:converter-jackson:2.3.0'
     api 'com.aliyun.dpa:oss-android-sdk:2.9.5'
     api 'com.aliyun.video.android:upload:1.6.2'
+    // 扫码
+    api 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7'
 }
