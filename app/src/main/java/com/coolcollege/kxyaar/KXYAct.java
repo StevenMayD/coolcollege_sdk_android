@@ -3,6 +3,7 @@ package com.coolcollege.kxyaar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ public class KXYAct extends Activity {
     private Button btn_uploadFile;
     private Button btn_ossUploadFile;
     private Button btn_shareMenu;
+    private Button btn_scan;
     private TextView textView;
 
     private String acToken = "af0e91b07e9a4887a9f3d895fc80c732";
@@ -183,6 +185,18 @@ public class KXYAct extends Activity {
                 callModule(params);
             }
         });
+        /** 扫码 */
+        btn_scan = findViewById(R.id.btn_scan);
+        btn_scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "scan";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
     }
 
     private void callModule (NativeEventParams params) {
@@ -213,7 +227,9 @@ public class KXYAct extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null) return;
-        textView.setText(new Gson().toJson(data.getParcelableExtra(MediaSelector.RESULT_DATA) != null ? data.getParcelableExtra(MediaSelector.RESULT_DATA) : data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA)));
+        String text = new Gson().toJson(data.getParcelableExtra(MediaSelector.RESULT_DATA) != null ? data.getParcelableExtra(MediaSelector.RESULT_DATA) : data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA));
+        text = (text != null && !("null".equals(text)))?text:data.getStringExtra(MediaSelector.RESULT_DATA);
+        textView.setText(text);
 //        switch (requestCode) {
 //            case 123:
 ////                TempFileBean videoTemp = data.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
