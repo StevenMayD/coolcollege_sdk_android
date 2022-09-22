@@ -9,57 +9,74 @@
         android:id="@+id/btn_startAudioRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:text="打开录音" />
 
     <Button
         android:id="@+id/btn_startVideoRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:text="打开视频录制" />
 
-    <Button
-        android:id="@+id/btn_chooseImage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="选择图片（相册/相机）" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_chooseImage"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="选择图片(相册/相机)" />
 
-    <Button
-        android:id="@+id/btn_chooseVideo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="选择视频（相册/相机）" />
+        <Button
+            android:id="@+id/btn_chooseVideo"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="选择视频(相册/相机)" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_uploadFile"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="文件上传" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_uploadFile"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="文件上传" />
 
-    <Button
-        android:id="@+id/btn_ossUploadFile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="阿里上传" />
+        <Button
+            android:id="@+id/btn_ossUploadFile"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="阿里上传" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_shareMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:text="分享" />
 
     <Button
         android:id="@+id/btn_scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:text="扫码" />
+
+    <Button
+        android:id="@+id/btn_getLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="定位" />
 
     <TextView
         android:id="@+id/textView"

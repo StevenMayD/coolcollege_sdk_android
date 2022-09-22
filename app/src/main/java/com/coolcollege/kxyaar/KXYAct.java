@@ -40,6 +40,7 @@ public class KXYAct extends Activity {
     private Button btn_ossUploadFile;
     private Button btn_shareMenu;
     private Button btn_scan;
+    private Button btn_getLocation;
     private TextView textView;
 
     private String acToken = "af0e91b07e9a4887a9f3d895fc80c732";
@@ -197,9 +198,22 @@ public class KXYAct extends Activity {
                 callModule(params);
             }
         });
+        /** 定位 */
+        btn_getLocation = findViewById(R.id.btn_getLocation);
+        btn_getLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "getLocation";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
     }
 
     private void callModule (NativeEventParams params) {
+        // 无页面跳转的回调
         APIModule.getAPIModule(KXYAct.this).moduleManage(params, acToken, entId, 123, new KXYCallback() {
             @Override
             public void onOKCallback(Object o) {
@@ -224,6 +238,7 @@ public class KXYAct extends Activity {
     }
 
     @Override
+    // 页面跳转的回调
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null) return;
