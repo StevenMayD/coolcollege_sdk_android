@@ -60,6 +60,7 @@ public class QrCodeScanActivity extends Activity implements QRCodeView.Delegate 
                 intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
             }
+            // 跳转相册页面
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY);
         });
         // 点击取消
@@ -108,11 +109,11 @@ public class QrCodeScanActivity extends Activity implements QRCodeView.Delegate 
     public void onScanQRCodeSuccess(String result) {
         Log.i(TAG, "result:" + result);
         vibrate();
-
+        // 携带回调参数
         Intent intent = new Intent();
         intent.putExtra(MediaSelector.RESULT_DATA, result);
         setResult(RESULT_OK, intent);
-
+        // 返回前一界面 并触发其onActivityResult回调
         finish();
     }
 

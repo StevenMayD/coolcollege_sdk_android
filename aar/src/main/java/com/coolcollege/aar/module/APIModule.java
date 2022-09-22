@@ -26,6 +26,7 @@ import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
 import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.bean.VoucherBean;
+import com.coolcollege.aar.callback.ILocationCallback;
 import com.coolcollege.aar.callback.KXYCallback;
 import com.coolcollege.aar.callback.RawResponseCallback;
 import com.coolcollege.aar.callback.ShareMenuListener;
@@ -33,6 +34,7 @@ import com.coolcollege.aar.callback.VODUploadListener;
 import com.coolcollege.aar.component.NativeDataProvider;
 import com.coolcollege.aar.dialog.AppShareDialog;
 import com.coolcollege.aar.dialog.AudioRecordDialog;
+import com.coolcollege.aar.location.LocationManager;
 import com.coolcollege.aar.manager.VODUploadManager;
 import com.coolcollege.aar.model.ErrorModel;
 import com.coolcollege.aar.model.OSSConfigModel;
@@ -55,6 +57,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -120,6 +123,8 @@ public class APIModule {
             buildShareDialog(data);
         } else if ("scan".equals(params.methodName)) { // 扫码
             scanView();
+        } else if ("getLocation".equals(params.methodName)) { // 定位
+            getLocation();
         }
     }
 
@@ -225,7 +230,26 @@ public class APIModule {
             }
         }, Permission.CAMERA);
     }
+    /** 定位 */
+    private void getLocation() {
+        // 创建定位管理器对象
+        LocationManager locationManager = LocationManager.shareLocationManager(act);
+        // 设置定位管理器的回调
+        locationManager.setLocationCallback(new ILocationCallback() {
+            @Override
+            public void onSuccessCallback(HashMap callback) {
+                // 将定位数据回调给外界调用方
+                kxyCallback.onOKCallback(callback);
+            }
 
+            @Override
+            public void onErrorCallback(HashMap callback) {
+                kxyCallback.onErrorCallback(callback);
+            }
+        });
+        // 定位管理器获取定位信息
+        locationManager.getLocationInfo();
+    }
     /**
      * 文件上传
      * @param params
