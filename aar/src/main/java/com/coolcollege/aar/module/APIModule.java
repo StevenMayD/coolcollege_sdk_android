@@ -42,6 +42,7 @@ import com.coolcollege.aar.model.OSSResItem;
 import com.coolcollege.aar.model.ShareMenuModel;
 import com.coolcollege.aar.model.VoucherModel;
 import com.coolcollege.aar.selector.MediaSelector;
+import com.coolcollege.aar.utils.GPSUtils;
 import com.coolcollege.aar.utils.GsonConfig;
 import com.coolcollege.aar.utils.PermissionManager;
 import com.coolcollege.aar.utils.PermissionStateListener;
@@ -232,6 +233,32 @@ public class APIModule {
     }
     /** 定位 */
     private void getLocation() {
+        // 校验设备GPS权限
+        if (GPSUtils.isOPen(act.getApplicationContext())) {
+            // 校验app位置信息权限
+            PermissionManager.checkPermissions(act, new PermissionStateListener() {
+                        @Override
+                        public void onGranted() {
+                            startLocation();
+                        }
+
+                        @Override
+                        public void onDenied() {
+                            HashMap locationInfo = new HashMap();
+                            locationInfo.put("error", "定位权限未打开");
+                            kxyCallback.onErrorCallback(locationInfo);
+                            Toast.makeText(act, "请前往手机设置打开定位权限", Toast.LENGTH_LONG).show();
+                        }
+                    }, Permission.ACCESS_FINE_LOCATION , Permission.ACCESS_COARSE_LOCATION);
+        } else {
+            HashMap locationInfo = new HashMap();
+            locationInfo.put("error", "定位权限未打开");
+            kxyCallback.onErrorCallback(locationInfo);
+            GPSUtils.openGPS(act);
+        }
+    }
+
+    private void startLocation() {
         // 创建定位管理器对象
         LocationManager locationManager = LocationManager.shareLocationManager(act);
         // 设置定位管理器的回调
@@ -250,6 +277,7 @@ public class APIModule {
         // 定位管理器获取定位信息
         locationManager.getLocationInfo();
     }
+
     /**
      * 文件上传
      * @param params

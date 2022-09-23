@@ -10,7 +10,6 @@ public class PermissionManager {
 
     public static void checkPermissions(Activity activity, PermissionStateListener listener, @PermissionDef String... permissions) {
         boolean has = AndPermission.hasPermissions(activity, permissions);
-
         if (has) {
             listener.onGranted();
         } else {
@@ -18,7 +17,6 @@ public class PermissionManager {
                     .runtime()
                     .permission(permissions)
                     .onGranted(pms -> {
-                        String name = Thread.currentThread().getName();
                         listener.onGranted();
                     })
                     .onDenied(pms -> {
