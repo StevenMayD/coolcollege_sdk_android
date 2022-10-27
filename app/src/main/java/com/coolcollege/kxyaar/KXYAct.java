@@ -43,8 +43,7 @@ public class KXYAct extends Activity {
     private Button btn_getLocation;
     private TextView textView;
 
-    private String acToken = "af0e91b07e9a4887a9f3d895fc80c732";
-    private String entId = "1067985194709028888";
+    private String entId = "1324923316665978965"; // 酷帮手企业id 非真实值的话，上传报错：{"error":"请求失败，请稍后重试", "isError":true}
 
     private Utils.ActivityLifecycleCallbacks activityLifecycleCallbacks = new Utils.ActivityLifecycleCallbacks() {
         @Override
@@ -146,7 +145,7 @@ public class KXYAct extends Activity {
                 uploadFileBean.url = "https://coolapi.coolcollege.cn/enterprise-api/common/upload";
                 uploadFileBean.filePath = "/storage/emulated/0/Pictures/Screenshots/Screenshot_20220506_172917_com.ikongjian.worker7741c888-7c30-48e2-9c3a-cf5f34c0bc46.jpg";
                 Map<String, String> formMap = new HashMap<>();
-                formMap.put("access_token", acToken);
+                formMap.put("access_token", "728babac3b2448abb1eed222e3dfbf1b");
                 uploadFileBean.formData = formMap;
 //                Map<String, String> headerMap = new HashMap<>();
 //                headerMap.put("access_token", "23b2b840e0e444119706842817678a2d");
@@ -167,9 +166,9 @@ public class KXYAct extends Activity {
             public void onClick(View view) {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "OSSUploadFile";
-//                params.methodData = "{\"type\":\"image\",\"files\":[{\"filePath\": \"/storage/emulated/0/Pictures/Screenshots/Screenshot_20220506_172917_com.ikongjian.worker7741c888-7c30-48e2-9c3a-cf5f34c0bc46.jpg\", \"objectKey\":\"lu001\"}]}";
-                params.methodData = "{\"type\":\"video\",\"files\":[{\"filePath\": \"/storage/emulated/0/DCIM/Camera/VID_20220316_164604.mp4\", \"objectKey\":\"lu002\"}]}";
-
+//                params.methodData = "{\"accessToken\":\"728babac3b2448abb1eed222e3dfbf1b\",\"type\":\"image\",\"files\":[{\"filePath\": \"/storage/emulated/0/Pictures/AppGallery/4_46ed8ff772db4368b10b8150da299df8e96cafbe-e72d-42cb-a964-489de1a903ececc09acb-5e64-44f7-abf6-eb19865c6f6f.jpg\", \"objectKey\":\"lu001\"}]}";
+                params.methodData = "{\"accessToken\":\"728babac3b2448abb1eed222e3dfbf1b\",\"type\":\"video\",\"files\":[{\"filePath\": \"/storage/emulated/0/Pictures/Screenshots/SVID_20220909_143707_1.mp4\", \"objectKey\":\"lu002\"}]}";
+                // image和video均验证通过：filePath: 上传文件不存在的话，上传进度视图的进度条始终0% 无法上传(后续优化，检测文件是否存在、实际调用文件都会存在)；     accessToken不正确的话：上传报错：{"error":"获取凭证失败，请稍后重试", "isError":true}
                 callModule(params);
             }
         });
@@ -214,7 +213,7 @@ public class KXYAct extends Activity {
 
     private void callModule (NativeEventParams params) {
         // 无页面跳转的回调
-        APIModule.getAPIModule(KXYAct.this).moduleManage(params, acToken, entId, 123, new KXYCallback() {
+        APIModule.getAPIModule(KXYAct.this).moduleManage(params, entId, 123, new KXYCallback() {
             @Override
             public void onOKCallback(Object o) {
                 runOnUiThread(new Runnable() {
