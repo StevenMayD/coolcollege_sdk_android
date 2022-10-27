@@ -419,7 +419,7 @@ public class APIModule {
             @Override
             public void onSuccess(RawResponseBean<VoucherBean> responseBean, String stResponse) {
                 voucherBean = responseBean.data;
-                if (voucherBean != null) {
+                if (voucherBean.getVideoId() != null) {
                     vodUpload();
                 } else {
                     kxyCallback.onErrorCallback(new ErrorModel(true, "获取凭证失败").toJson());
