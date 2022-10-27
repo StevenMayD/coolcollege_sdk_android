@@ -92,8 +92,7 @@ public class APIModule {
     }
 
     /** 主入口 */
-    public void moduleManage (NativeEventParams params, String accessToken, String enterpriseId, int requestCode, KXYCallback callback) {
-        acToken = accessToken;
+    public void moduleManage (NativeEventParams params, String enterpriseId, int requestCode, KXYCallback callback) {
         entId = enterpriseId;
         kxyCallback = callback;
         reqCode = requestCode;
@@ -114,6 +113,10 @@ public class APIModule {
             uploadFile(upload);
         } else if ("OSSUploadFile".equals(params.methodName)) { // 阿里上传
             ossUp = GsonConfig.get().getGson().fromJson(params.methodData, OSSUploadFileBean.class);
+            acToken = ossUp.accessToken;
+            if (acToken == null) {
+                acToken = " ";
+            }
             if ("video".equals(ossUp.type)) {
                 voucher();
             } else {

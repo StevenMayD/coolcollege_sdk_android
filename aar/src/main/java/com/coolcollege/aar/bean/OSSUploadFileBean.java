@@ -5,4 +5,5 @@ import java.util.List;
 public class OSSUploadFileBean {
     public List<OSSFileBean> files;
     public String type;
+    public String accessToken;
 }
