@@ -395,7 +395,7 @@ public class APIModule {
                     try {
                         JSONObject result = new JSONObject(stResponse);
                         JSONObject data = new JSONObject(result.get("data") + "");
-                        kxyCallback.onErrorCallback(new ErrorModel(true, String.valueOf(data.get("msg"))).toJson());
+                        kxyCallback.onErrorCallback(new ErrorModel(true, "获取凭证失败").toJson());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
