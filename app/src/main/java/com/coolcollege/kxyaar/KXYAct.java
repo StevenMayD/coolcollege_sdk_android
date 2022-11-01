@@ -219,7 +219,7 @@ public class KXYAct extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        textView.setText(new Gson().toJson(o));
+                        textView.setText(new Gson().toJson(o)); // uploadFile ok
                     }
                 });
             }
@@ -241,32 +241,20 @@ public class KXYAct extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null) return;
-        String text = new Gson().toJson(data.getParcelableExtra(MediaSelector.RESULT_DATA) != null ? data.getParcelableExtra(MediaSelector.RESULT_DATA) : data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA));
-        text = (text != null && !("null".equals(text)))?text:data.getStringExtra(MediaSelector.RESULT_DATA);
-        textView.setText(text);
-//        switch (requestCode) {
-//            case 123:
-////                TempFileBean videoTemp = data.getParcelableExtra(GlobalKey.VIDEO_PATH_KEY);
-////                StringBuffer sb = new StringBuffer();
-////                sb.append("path: ").append(videoTemp.path).append("\n");
-////                sb.append("size: ").append(videoTemp.size).append("\n");
-////                sb.append("duration: ").append(videoTemp.duration).append("\n");
-////                textView.setText(sb.toString());
-//                textView.setText(new Gson().toJson(data));
-//                break;
-//            case 234:
-//            case 345:
-//                ArrayList<MediaItemBean> mediaItem = data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA);
-//                StringBuffer sbMedia = new StringBuffer();
-//                for (MediaItemBean item : mediaItem) {
-//                    sbMedia.append("{");
-//                    sbMedia.append("path: ").append(item.path).append("\n");
-//                    sbMedia.append("size: ").append(item.size).append("\n");
-//                    sbMedia.append("duration: ").append(item.duration);
-//                    sbMedia.append("}").append("\n");
-//                }
-//                textView.setText(sbMedia.toString());
-//                break;
-//        }
+
+        Object obj1 = data.getParcelableArrayListExtra(MediaSelector.RESULT_DATA); // chooseImage 返回ArrayList 否则null
+        Object obj2 = data.getStringExtra(MediaSelector.RESULT_DATA); // scan 返回String:https://mobile.coolcollege.cn/assets-share.html?short_link=https%3A%2F%2Fct12coolapi.coolcollege.cn%2Fenterprise-manage-api%2Fr%2F5520&eid=951057547274620933  否则null
+        Object obj3 = data.getParcelableExtra(MediaSelector.RESULT_DATA); // null
+
+        String text = null;
+        if (obj1 != null) {
+            text = new Gson().toJson(obj1); // chooseImage ok
+        } else if (obj2 != null) {
+            text = new Gson().toJson(obj2); // scan ok
+        } else if (obj3 != null) {
+            text = new Gson().toJson(obj3);
+        }
+        // 页面显示
+        if (text != null) { textView.setText(text); }
     }
 }
