@@ -54,7 +54,7 @@ public class FilePathProvider {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             uri = FileProvider.getUriForFile(Options.get(),
-                    Options.get().getPackageName() + ".provider", file);
+                    Options.get().getPackageName() + ".my.package.name.provider", file);
         } else {
             uri = Uri.fromFile(file);
         }
