@@ -41,6 +41,12 @@ public class KXYAct extends Activity {
     private Button btn_shareMenu;
     private Button btn_scan;
     private Button btn_getLocation;
+    private Button btn_vibration;
+    private Button btn_sendMessage;
+    private Button btn_copyMessage;
+    private Button btn_saveImage;
+    private Button btn_getSystemInfo;
+
     private TextView textView;
 
     private String entId = "1324923316665978965"; // 酷帮手企业id 非真实值的话，上传报错：{"error":"请求失败，请稍后重试", "isError":true}
@@ -204,6 +210,66 @@ public class KXYAct extends Activity {
             public void onClick(View view) {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "getLocation";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+        /** 震动 */
+        btn_vibration = findViewById(R.id.btn_vibration);
+        btn_vibration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "vibration";
+                params.methodData = "{\"duration\":1000}";
+
+                callModule(params);
+            }
+        });
+        /** 复制信息并跳转微信 */
+        btn_sendMessage = findViewById(R.id.btn_sendMessage);
+        btn_sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "sendMessage";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+        /** 复制信息只粘贴板 */
+        btn_copyMessage = findViewById(R.id.btn_copyMessage);
+        btn_copyMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "copyMessage";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+        /** 保存图片收相册 */
+        btn_saveImage = findViewById(R.id.btn_saveImage);
+        btn_saveImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "saveImage";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+        /** 获取手机系统信息 */
+        btn_getSystemInfo = findViewById(R.id.btn_getSystemInfo);
+        btn_getSystemInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "getSystemInfo";
                 params.methodData = "{}";
 
                 callModule(params);
