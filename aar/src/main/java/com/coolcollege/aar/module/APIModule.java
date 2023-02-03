@@ -1,7 +1,10 @@
 package com.coolcollege.aar.module;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -16,6 +19,7 @@ import com.coolcollege.aar.R;
 import com.coolcollege.aar.act.QrCodeScanActivity;
 import com.coolcollege.aar.act.VideoRecordActivity;
 import com.coolcollege.aar.bean.AudioRecordBean;
+import com.coolcollege.aar.bean.CopyMessageBean;
 import com.coolcollege.aar.bean.NativeEventParams;
 import com.coolcollege.aar.bean.OKGOBean;
 import com.coolcollege.aar.bean.OSSConfigBean;
@@ -48,6 +52,7 @@ import com.coolcollege.aar.utils.GPSUtils;
 import com.coolcollege.aar.utils.GsonConfig;
 import com.coolcollege.aar.utils.PermissionManager;
 import com.coolcollege.aar.utils.PermissionStateListener;
+import com.coolcollege.aar.utils.ToastUtil;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -133,9 +138,25 @@ public class APIModule {
             getLocation();
         } else if ("vibration".equals(params.methodName)) { // 震动
             vibration(NativeDataProvider.genericVibrationTimes(params.methodData));
+        } else if ("copyMessage".equals(params.methodName)) { // 复制信息只粘贴板
+            CopyMessageBean copyMessageBean = NativeDataProvider.parseData(params.methodData, CopyMessageBean.class);
+            copyMessage(copyMessageBean);
         }
     }
-
+    /** 复制信息只粘贴板 */
+    private void copyMessage (CopyMessageBean copyMessageBean) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) act.getApplicationContext().getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", copyMessageBean.content);
+            clipboard.setPrimaryClip(clip);
+        } else {
+            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) act.getApplicationContext().getSystemService(CLIPBOARD_SERVICE);
+            clipboard.setText(copyMessageBean.content);
+        }
+        if (copyMessageBean.alert != null && !"".equals(copyMessageBean.alert)) {
+            ToastUtil.showToast(copyMessageBean.alert);
+        }
+    }
     /** 震动 */
     private void vibration (int duration) {
         Vibrator vibrator = (Vibrator) act.getSystemService(Context.VIBRATOR_SERVICE);

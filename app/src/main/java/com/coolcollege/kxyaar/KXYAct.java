@@ -246,7 +246,7 @@ public class KXYAct extends Activity {
             public void onClick(View view) {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "copyMessage";
-                params.methodData = "{}";
+                params.methodData = "{\"content\":\"202302031833\",\"alert\":\"已复制信息至粘贴板\"}";
 
                 callModule(params);
             }
