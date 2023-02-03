@@ -2,9 +2,11 @@ package com.coolcollege.aar.module;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -129,6 +131,18 @@ public class APIModule {
             scanView();
         } else if ("getLocation".equals(params.methodName)) { // 定位
             getLocation();
+        } else if ("vibration".equals(params.methodName)) { // 震动
+            vibration(NativeDataProvider.genericVibrationTimes(params.methodData));
+        }
+    }
+
+    /** 震动 */
+    private void vibration (int duration) {
+        Vibrator vibrator = (Vibrator) act.getSystemService(Context.VIBRATOR_SERVICE);
+        if (duration > 0) {
+            vibrator.vibrate(duration);
+        } else {
+            vibrator.vibrate(200);
         }
     }
 
