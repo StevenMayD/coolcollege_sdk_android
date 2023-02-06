@@ -3,6 +3,7 @@ package com.coolcollege.aar.module;
 import static android.content.Context.CLIPBOARD_SERVICE;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
+import com.blankj.utilcode.util.ToastUtils;
 import com.coolcollege.aar.R;
 import com.coolcollege.aar.act.QrCodeScanActivity;
 import com.coolcollege.aar.act.VideoRecordActivity;
@@ -27,6 +29,7 @@ import com.coolcollege.aar.bean.OSSUploadFileBean;
 import com.coolcollege.aar.bean.PickImgBean;
 import com.coolcollege.aar.bean.PickVideoBean;
 import com.coolcollege.aar.bean.RawResponseBean;
+import com.coolcollege.aar.bean.SaveImageBean;
 import com.coolcollege.aar.bean.ShareParams;
 import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
@@ -52,6 +55,7 @@ import com.coolcollege.aar.utils.GPSUtils;
 import com.coolcollege.aar.utils.GsonConfig;
 import com.coolcollege.aar.utils.PermissionManager;
 import com.coolcollege.aar.utils.PermissionStateListener;
+import com.coolcollege.aar.utils.SaveImg2Local;
 import com.coolcollege.aar.utils.ToastUtil;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -80,6 +84,7 @@ public class APIModule {
 
     private static APIModule apiModule = new APIModule();
     private static Activity act;
+    private static Application app;
     private Handler mHandler = new Handler(Looper.getMainLooper());
     /** 录音弹窗 */
     private AudioRecordDialog audioDialog;
@@ -93,8 +98,9 @@ public class APIModule {
     private KXYCallback kxyCallback;
     private int reqCode;
 
-    public static APIModule getAPIModule (Activity activity) {
+    public static APIModule getAPIModule (Activity activity, Application application) {
         act = activity;
+        app = application;
         return apiModule;
     }
 
@@ -141,7 +147,27 @@ public class APIModule {
         } else if ("copyMessage".equals(params.methodName)) { // 复制信息只粘贴板
             CopyMessageBean copyMessageBean = NativeDataProvider.parseData(params.methodData, CopyMessageBean.class);
             copyMessage(copyMessageBean);
+        } else if ("sendMessage".equals(params.methodName)) { // 复制信息并跳转微信
+
+        } else if ("saveImage".equals(params.methodName)) { // 保存图片到相册
+            PermissionManager.checkPermissions(act, new PermissionStateListener() {
+                @Override
+                public void onGranted() {
+                    SaveImageBean saveImg = NativeDataProvider.parseData(params.methodData, SaveImageBean.class);
+                    saveImg(saveImg.url);
+                }
+
+                @Override
+                public void onDenied() {
+                    ToastUtils.showShort("请前往手机设置打开相应的权限");
+                }
+            },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE);
+        } else if ("getSystemInfo".equals(params.methodName)) { // 获取手机系统信息
+
         }
+    }
+    private void saveImg(String url) {
+        SaveImg2Local.saveImageFromUrl(url, app);
     }
     /** 复制信息只粘贴板 */
     private void copyMessage (CopyMessageBean copyMessageBean) {

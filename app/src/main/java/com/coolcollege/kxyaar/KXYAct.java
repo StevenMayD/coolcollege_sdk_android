@@ -24,6 +24,7 @@ import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.callback.KXYCallback;
 import com.coolcollege.aar.module.APIModule;
 import com.coolcollege.aar.selector.MediaSelector;
+import com.coolcollege.application.MyApplication;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -258,7 +259,7 @@ public class KXYAct extends Activity {
             public void onClick(View view) {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "saveImage";
-                params.methodData = "{}";
+                params.methodData = "{\"url\":\"https://tenfei04.cfp.cn/creative/vcg/veer/612/veer-310941708.jpg\"}";
 
                 callModule(params);
             }
@@ -279,7 +280,7 @@ public class KXYAct extends Activity {
 
     private void callModule (NativeEventParams params) {
         // 无页面跳转的回调
-        APIModule.getAPIModule(KXYAct.this).moduleManage(params, entId, 123, new KXYCallback() {
+        APIModule.getAPIModule(KXYAct.this, MyApplication.get()).moduleManage(params, entId, 123, new KXYCallback() {
             @Override
             public void onOKCallback(Object o) {
                 runOnUiThread(new Runnable() {
