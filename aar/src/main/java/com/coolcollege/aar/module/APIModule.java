@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -151,7 +153,20 @@ public class APIModule {
             CopyMessageBean copyMessageBean = NativeDataProvider.parseData(params.methodData, CopyMessageBean.class);
             copyMessage(copyMessageBean);
         } else if ("sendMessage".equals(params.methodName)) { // 复制信息并跳转微信
-
+            if (AppUtils.isAppInstalled("com.tencent.mm")) {
+                // 复制信息到粘贴板
+                CopyMessageBean copyMessageBean = NativeDataProvider.parseData(params.methodData, CopyMessageBean.class);
+                copyMessage(copyMessageBean);
+                // 跳转微信
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ComponentName cn = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
+                intent.setComponent(cn);
+                act.startActivity(intent);
+            } else {
+                ToastUtil.showToast("没有安装微信，请先安装");
+            }
         } else if ("saveImage".equals(params.methodName)) { // 保存图片到相册
             PermissionManager.checkPermissions(act, new PermissionStateListener() {
                 @Override

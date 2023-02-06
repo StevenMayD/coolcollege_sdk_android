@@ -235,7 +235,7 @@ public class KXYAct extends Activity {
             public void onClick(View view) {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "sendMessage";
-                params.methodData = "{}";
+                params.methodData = "{\"content\":\"人来人往\"}";
 
                 callModule(params);
             }
