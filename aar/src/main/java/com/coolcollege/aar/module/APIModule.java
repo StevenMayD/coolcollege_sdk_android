@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
+import com.blankj.utilcode.util.DeviceUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.coolcollege.aar.R;
 import com.coolcollege.aar.act.QrCodeScanActivity;
@@ -31,6 +33,7 @@ import com.coolcollege.aar.bean.PickVideoBean;
 import com.coolcollege.aar.bean.RawResponseBean;
 import com.coolcollege.aar.bean.SaveImageBean;
 import com.coolcollege.aar.bean.ShareParams;
+import com.coolcollege.aar.bean.SystemInfo;
 import com.coolcollege.aar.bean.TempFileBean;
 import com.coolcollege.aar.bean.UploadFileBean;
 import com.coolcollege.aar.bean.VideoRecordBean;
@@ -163,7 +166,10 @@ public class APIModule {
                 }
             },Permission.CAMERA, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE);
         } else if ("getSystemInfo".equals(params.methodName)) { // 获取手机系统信息
-
+            SystemInfo info = new SystemInfo(DeviceUtils.getModel(), ScreenUtils.getAppScreenWidth(), ScreenUtils.getAppScreenHeight()
+                    , DeviceUtils.getSDKVersionName(), "Android",
+                    ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(), DeviceUtils.getManufacturer());
+            kxyCallback.onOKCallback(info);
         }
     }
     private void saveImg(String url) {
