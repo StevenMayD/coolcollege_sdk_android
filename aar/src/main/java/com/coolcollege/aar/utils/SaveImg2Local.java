@@ -57,14 +57,15 @@ public class SaveImg2Local {
                 out.flush();
                 out.close();
 
-                if (Build.VERSION.SDK_INT >= 29) {
+//                if (Build.VERSION.SDK_INT >= 29) {
                     ContentValues values = new ContentValues();
                     values.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
                     values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
                     Uri uri = app.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                } else {
-                    MediaStore.Images.Media.insertImage(app.getContentResolver(), file.getAbsolutePath(), fileName, null);
-                }
+//                } else {
+                    // MediaStore.Images.Media.insertImage会生成保存两张图片到相册(系统帮我们生成的根据当前时间命名的缩略图)，直接使用上面的方法即可
+//                    MediaStore.Images.Media.insertImage(app.getContentResolver(), file.getAbsolutePath(), fileName, null);
+//                }
                 app.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + filePath)));
                 return filePath;
             }
