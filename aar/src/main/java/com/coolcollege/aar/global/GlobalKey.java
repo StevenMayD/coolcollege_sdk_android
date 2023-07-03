@@ -283,6 +283,7 @@ public interface GlobalKey {
     String MAX_COUNT_KEY = "max_count";
     String COMPRESSED_KEY = "compressed";
     String PERCENT_KEY = "percent";
+    String SOURCE_TYPE_KEY = "source_type";
 
     String IMG_PATH_LIST_KEY = "img_path_list";
     String VIDEO_PATH_LIST_KEY = "video_path_list";

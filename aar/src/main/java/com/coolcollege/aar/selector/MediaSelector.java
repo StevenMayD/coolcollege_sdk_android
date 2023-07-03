@@ -20,6 +20,8 @@ public final class MediaSelector {
     private WeakReference<Activity> activity;
     private WeakReference<Fragment> fragment;
     public static final String TYPE_IMG = "type_img";
+    public static final String IMG_CAMERA = "camera";
+    public static final String IMG_ALBUM = "album";
     public static final String TYPE_VIDEO = "type_video";
     public static final String SELECTOR_OPTIONS_KEY = "selector_options";
     public static final String RESULT_DATA = "result_data";

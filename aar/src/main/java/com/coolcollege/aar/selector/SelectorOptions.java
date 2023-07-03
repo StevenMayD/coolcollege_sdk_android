@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 
 import com.coolcollege.aar.act.MediaSelectorActivity;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by Evan_for on 2020/7/8
@@ -52,6 +54,11 @@ public final class SelectorOptions {
 
     public SelectorOptions hideCamera(boolean hideCamera) {
         optionModel.hideCamera = hideCamera;
+        return this;
+    }
+
+    public SelectorOptions sourceType(ArrayList<String> sourceType) {
+        optionModel.sourceType = sourceType;
         return this;
     }
 

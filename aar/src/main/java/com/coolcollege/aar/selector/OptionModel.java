@@ -3,6 +3,8 @@ package com.coolcollege.aar.selector;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by Evan_for on 2020/7/8
  */
@@ -16,6 +18,7 @@ public class OptionModel implements Parcelable {
     public boolean compressed;
     public int percent;
     public int duration;
+    public ArrayList<String> sourceType;
 
     public OptionModel() {
     }
@@ -29,11 +32,12 @@ public class OptionModel implements Parcelable {
         count = in.readInt();
         type = in.readString();
         primaryColor = in.readInt();
-        percent = in.readInt();
-        duration = in.readInt();
         colorSt = in.readString();
         hideCamera = in.readByte() != 0;
         compressed = in.readByte() != 0;
+        percent = in.readInt();
+        duration = in.readInt();
+        sourceType = in.createStringArrayList();
     }
 
     public static final Creator<OptionModel> CREATOR = new Creator<OptionModel>() {
@@ -58,10 +62,11 @@ public class OptionModel implements Parcelable {
         dest.writeInt(count);
         dest.writeString(type);
         dest.writeInt(primaryColor);
-        dest.writeInt(percent);
-        dest.writeInt(duration);
         dest.writeString(colorSt);
         dest.writeByte((byte) (hideCamera ? 1 : 0));
         dest.writeByte((byte) (compressed ? 1 : 0));
+        dest.writeInt(percent);
+        dest.writeInt(duration);
+        dest.writeStringList(sourceType);
     }
 }

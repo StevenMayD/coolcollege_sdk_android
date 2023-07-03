@@ -48,6 +48,7 @@ import com.coolcollege.aar.callback.VODUploadListener;
 import com.coolcollege.aar.component.NativeDataProvider;
 import com.coolcollege.aar.dialog.AppShareDialog;
 import com.coolcollege.aar.dialog.AudioRecordDialog;
+import com.coolcollege.aar.global.GlobalKey;
 import com.coolcollege.aar.location.LocationManager;
 import com.coolcollege.aar.manager.VODUploadManager;
 import com.coolcollege.aar.model.ErrorModel;
@@ -274,6 +275,7 @@ public class APIModule {
                         .maxSelectCount(imgData.count)
                         .compressed(imgData.compressed)
                         .percent(imgData.percent)
+                        .sourceType(imgData.sourceType)
                         .forResult(reqCode);
             }
 
