@@ -27,6 +27,7 @@ import com.coolcollege.aar.selector.MediaSelector;
 import com.coolcollege.application.MyApplication;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -119,6 +120,11 @@ public class KXYAct extends Activity {
                 imgBean.count = 9;
                 imgBean.percent = 80;
                 imgBean.compressed = true;
+                ArrayList<String> sourceTypes = new ArrayList<>();
+//                sourceTypes.add("album"); // 只相册
+                sourceTypes.add("camera"); // 只拍照
+                imgBean.sourceType = sourceTypes;
+
 
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "chooseImage";
