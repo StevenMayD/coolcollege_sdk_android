@@ -135,6 +135,7 @@ public interface GlobalKey {
     String OTHER_WEB_PATH_KEY = "web_path";
     String OTHER_WEB_HOST_KEY = "web_host";
     String OTHER_WEB_TITLE_KEY = "web_title";
+    String OTHER_WEB_TITLE_BAR_LEFT_PIC_KEY = "web_title_bar_left_pic";
     String RESOURCE_IDS_KEY = "resource_ids";
 
     String LESSON_INFO = "create_lesson_info";

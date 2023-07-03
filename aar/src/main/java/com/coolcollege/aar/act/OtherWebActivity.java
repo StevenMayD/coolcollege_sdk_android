@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 
 import com.coolcollege.aar.R;
+import com.coolcollege.aar.global.GlobalKey;
 import com.coolcollege.aar.webdsbridge.ApiWebView;
 
 public class OtherWebActivity extends SimpleActivity {
@@ -47,14 +48,14 @@ public class OtherWebActivity extends SimpleActivity {
     protected void initData(Bundle bundle) {
         if (bundle == null) {
             Intent intent = getIntent();
-            title = intent.getStringExtra("web_title");
-            path = intent.getStringExtra("web_path");
-            host = intent.getStringExtra("web_host");
-            leftPic = intent.getIntExtra("web_title_bar_left_pic", 999);
+            title = intent.getStringExtra(GlobalKey.OTHER_WEB_TITLE_KEY);
+            path = intent.getStringExtra(GlobalKey.OTHER_WEB_PATH_KEY);
+            host = intent.getStringExtra(GlobalKey.OTHER_WEB_HOST_KEY);
+            leftPic = intent.getIntExtra(GlobalKey.OTHER_WEB_TITLE_BAR_LEFT_PIC_KEY, 999);
         } else {
-            title = bundle.getString("web_title");
-            path = bundle.getString("web_path");
-            host = bundle.getString("web_host");
+            title = bundle.getString(GlobalKey.OTHER_WEB_TITLE_KEY);
+            path = bundle.getString(GlobalKey.OTHER_WEB_PATH_KEY);
+            host = bundle.getString(GlobalKey.OTHER_WEB_HOST_KEY);
         }
 
         if (title != null) {
@@ -72,9 +73,9 @@ public class OtherWebActivity extends SimpleActivity {
 
     @Override
     protected void onSavedData(Bundle bundle) {
-        bundle.putString("web_title", title);
-        bundle.putString("web_path", path);
-        bundle.putString("web_host", host);
+        bundle.putString(GlobalKey.OTHER_WEB_TITLE_KEY, title);
+        bundle.putString(GlobalKey.OTHER_WEB_PATH_KEY, path);
+        bundle.putString(GlobalKey.OTHER_WEB_HOST_KEY, host);
     }
 
     @Override
