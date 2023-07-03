@@ -47,6 +47,7 @@ public class KXYAct extends Activity {
     private Button btn_copyMessage;
     private Button btn_saveImage;
     private Button btn_getSystemInfo;
+    private Button btn_loadWebView;
 
     private TextView textView;
 
@@ -272,6 +273,19 @@ public class KXYAct extends Activity {
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "getSystemInfo";
                 params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+
+        /** 加载独立webview */
+        btn_loadWebView = findViewById(R.id.btn_loadWebView);
+        btn_loadWebView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "loadWebView";
+                params.methodData = "{\"url\":\"https://www.baidu.com\"}";
 
                 callModule(params);
             }
