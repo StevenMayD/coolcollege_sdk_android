@@ -62,6 +62,7 @@ import com.coolcollege.aar.utils.PermissionManager;
 import com.coolcollege.aar.utils.PermissionStateListener;
 import com.coolcollege.aar.utils.SaveImg2Local;
 import com.coolcollege.aar.utils.ToastUtil;
+import com.coolcollege.aar.utils.WebPageUtils;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -185,6 +186,9 @@ public class APIModule {
                     , DeviceUtils.getSDKVersionName(), "Android",
                     ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(), DeviceUtils.getManufacturer());
             kxyCallback.onOKCallback(info);
+        } else if ("loadWebView".equals(params.methodName)) { // 加载独立webview
+            SaveImageBean saveImg = NativeDataProvider.parseData(params.methodData, SaveImageBean.class);
+            WebPageUtils.startWebPage("", saveImg.url, "", R.mipmap.ic_close_white_60, app);
         }
     }
     private void saveImg(String url) {

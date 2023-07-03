@@ -1,9 +1,8 @@
-package com.May.platform.dsbridge;
+package com.coolcollege.aar.webdsbridge;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,35 +34,23 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-
-import com.May.platform.Global;
-import com.May.platform.PlatformApplication;
-import com.May.platform.model.MessageModel;
-import com.May.platform.modules.audio.AudioService;
-import com.May.platform.modules.device.DeviceModule;
-import com.May.platform.modules.util.PermissionManager;
-import com.May.platform.modules.util.PermissionStateListener;
-import com.blankj.utilcode.util.ToastUtils;
+import com.coolcollege.aar.utils.PermissionManager;
+import com.coolcollege.aar.utils.PermissionStateListener;
 import com.yanzhenjie.permission.runtime.Permission;
-
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.lang.reflect.Method;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
-import static com.May.platform.modules.audio.AudioService.isBackground;
 
 
 /**
@@ -71,9 +58,6 @@ import static com.May.platform.modules.audio.AudioService.isBackground;
  */
 
 public class ApiWebView extends WebView {
-
-    public static final String MESSAGE_TYPE_UPDATE_TITLE = "MESSAGE_TYPE_UPDATE_TITLE";
-    public static final String MESSAGE_TYPE_SHOW_LEFT_VIEW = "MESSAGE_TYPE_SHOW_LEFT_VIEW";
     public static final String REQ_AUDIO_CAPTURE = "android.webkit.resource.AUDIO_CAPTURE";
 
 
@@ -144,7 +128,7 @@ public class ApiWebView extends WebView {
             boolean asyn = false;
             try {
                 method = cls.getMethod(methodName,
-                        new Class[]{Object.class, CompletionHandler.class});
+                        new Class[]{Object.class, ApiCompletionHandler.class});
                 asyn = true;
             } catch (Exception e) {
                 try {
@@ -173,7 +157,7 @@ public class ApiWebView extends WebView {
             try {
                 if (asyn) {
                     final String cb = callback;
-                    method.invoke(jsb, arg, new CompletionHandler() {
+                    method.invoke(jsb, arg, new ApiCompletionHandler() {
 
                         @Override
                         public void complete(Object retValue) {
@@ -226,7 +210,7 @@ public class ApiWebView extends WebView {
 
     }
 
-    Map<Integer, OnReturnValue> handlerMap = new HashMap<>();
+    Map<Integer, ApiOnReturnValue> handlerMap = new HashMap<>();
 
     public interface JavascriptCloseWindowListener {
         /**
@@ -354,47 +338,6 @@ public class ApiWebView extends WebView {
                     return true;
                 }
 
-                if (url.contains(Global.WX_PAY_H5_URL)) {
-                    HashMap<String, String> webRefererHead = Global.getWebRefererHead();
-                    webView.loadUrl(url, webRefererHead);
-                    return true;
-                }
-
-
-                if (url.startsWith(Global.SCHEME_WX_PAY)) {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        String decode = Uri.decode(url);
-                        Uri uri = Uri.parse(decode);
-                        intent.setData(uri);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        PlatformApplication.get().getApp().startActivity(intent);
-                        return true;
-
-                    } catch (Exception e) {
-                        return super.shouldOverrideUrlLoading(webView, url);
-                    }
-                }
-
-                if (url.startsWith(Global.SCHEME_ALI_PAY)) {
-                    try {
-                        Intent intent;
-                        intent = Intent.parseUri(url,
-                                Intent.URI_INTENT_SCHEME);
-                        intent.addCategory("android.intent.category.BROWSABLE");
-                        intent.setComponent(null);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        PlatformApplication.get().getApp().startActivity(intent);
-                        return true;
-                    } catch (URISyntaxException e) {
-                        return super.shouldOverrideUrlLoading(webView, url);
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getContext(), "请先安装支付宝", Toast.LENGTH_LONG).show();
-                        return super.shouldOverrideUrlLoading(webView, url);
-                    }
-                }
-
                 return super.shouldOverrideUrlLoading(webView, url);
             }
 
@@ -475,7 +418,7 @@ public class ApiWebView extends WebView {
                     Method method = null;
                     try {
                         method = cls.getMethod(nameStr[1],
-                                new Class[]{Object.class, CompletionHandler.class});
+                                new Class[]{Object.class, ApiCompletionHandler.class});
                         asyn = true;
                     } catch (Exception e) {
                         try {
@@ -534,7 +477,7 @@ public class ApiWebView extends WebView {
                         try {
                             int id = jsonObject.getInt("id");
                             boolean isCompleted = jsonObject.getBoolean("complete");
-                            OnReturnValue handler = handlerMap.get(id);
+                            ApiOnReturnValue handler = handlerMap.get(id);
                             if (jsonObject.has("data")) {
                                 data = jsonObject.get("data");
                             }
@@ -670,7 +613,7 @@ public class ApiWebView extends WebView {
         evaluateJavascript(String.format("window._handleMessageFromNative(%s)", info.toString()));
     }
 
-    public synchronized <T> void callHandler(String method, Object[] args, final OnReturnValue<T> handler) {
+    public synchronized <T> void callHandler(String method, Object[] args, final ApiOnReturnValue<T> handler) {
 
         CallInfo callInfo = new CallInfo(method, callID++, args);
         if (handler != null) {
@@ -689,7 +632,7 @@ public class ApiWebView extends WebView {
         callHandler(method, args, null);
     }
 
-    public <T> void callHandler(String method, OnReturnValue<T> handler) {
+    public <T> void callHandler(String method, ApiOnReturnValue<T> handler) {
         callHandler(method, null, handler);
     }
 
@@ -700,7 +643,7 @@ public class ApiWebView extends WebView {
      * @param handlerName
      * @param existCallback
      */
-    public void hasJavascriptMethod(String handlerName, OnReturnValue<Boolean> existCallback) {
+    public void hasJavascriptMethod(String handlerName, ApiOnReturnValue<Boolean> existCallback) {
         callHandler("_hasJavascriptMethod", new Object[]{handlerName}, existCallback);
     }
 
@@ -759,14 +702,7 @@ public class ApiWebView extends WebView {
 
         @Override
         public void onReceivedTitle(WebView view, String title) {
-            if (!isBackground)
-//                EventBus.getDefault().post(new MessageModel<String>(AudioService.AUDIO_SERVICE_STOP));
-//            EventBus.getDefault().post(new MessageModel<String>(MESSAGE_TYPE_UPDATE_TITLE, title));
-            if (webChromeClient != null) {
-//                webChromeClient.onReceivedTitle(view, title);
-            } else {
-                super.onReceivedTitle(view, title);
-            }
+            super.onReceivedTitle(view, title);
         }
 
         @Override
@@ -1167,16 +1103,10 @@ public class ApiWebView extends WebView {
     }
 
     public void goBack(Activity activity, boolean force) {
-        if (!isBackground)
-//            EventBus.getDefault().post(new MessageModel<String>(AudioService.AUDIO_SERVICE_STOP));
-        if (DeviceModule.isOnBack && !force) {
-            callHandler("device.onBack", new Object[]{"back"}, null);
+        if (canGoBack()) {
+            goBack();
         } else {
-            if (canGoBack()) {
-                goBack();
-            } else {
-                activity.finish();
-            }
+            activity.finish();
         }
     }
 }

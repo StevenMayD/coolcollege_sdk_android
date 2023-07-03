@@ -28,6 +28,9 @@
         <activity
             android:name=".act.QrCodeScanActivity"
             android:theme="@style/k_AppTheme"/>
+        <activity
+            android:name=".act.OtherWebActivity"
+            android:theme="@style/k_AppTheme"/>
 <!--        <service-->
 <!--            android:name="com.zlw.main.recorderlib.recorder.RecordService"-->
 <!--            android:enabled="true"-->

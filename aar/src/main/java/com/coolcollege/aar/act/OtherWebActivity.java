@@ -1,4 +1,4 @@
-package com.coolcollege.kxy.view.activity;
+package com.coolcollege.aar.act;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,23 +9,16 @@ import android.view.ViewParent;
 import android.webkit.WebSettings;
 import android.widget.ProgressBar;
 
-import com.May.platform.dsbridge.ApiWebView;
-import com.coolcollege.kxy.BuildConfig;
-import com.coolcollege.kxy.R;
-import com.coolcollege.kxy.base.SimpleActivity;
-import com.coolcollege.kxy.global.GlobalKey;
-import com.coolcollege.kxy.global.UrlPath;
-import com.coolcollege.kxy.network.Global;
-import com.coolcollege.kxy.network.UrlProvider;
-import com.coolcollege.kxy.utils.SpUtils;
+import androidx.annotation.Nullable;
 
-import butterknife.BindView;
+import com.coolcollege.aar.R;
+import com.coolcollege.aar.webdsbridge.ApiWebView;
 
 public class OtherWebActivity extends SimpleActivity {
 
-    @BindView(R.id.wb_View)
+//    @BindView(R.id.wb_View)
     ApiWebView wbView;
-    @BindView(R.id.pb_top)
+//    @BindView(R.id.pb_top)
     ProgressBar pbTop;
     private String title;
     private String path;
@@ -40,6 +33,9 @@ public class OtherWebActivity extends SimpleActivity {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void initView() {
+        wbView = findViewById(R.id.wb_View);
+        pbTop = findViewById(R.id.pb_top);
+
         WebSettings settings = wbView.getSettings();
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
@@ -51,14 +47,14 @@ public class OtherWebActivity extends SimpleActivity {
     protected void initData(Bundle bundle) {
         if (bundle == null) {
             Intent intent = getIntent();
-            title = intent.getStringExtra(GlobalKey.OTHER_WEB_TITLE_KEY);
-            path = intent.getStringExtra(GlobalKey.OTHER_WEB_PATH_KEY);
-            host = intent.getStringExtra(GlobalKey.OTHER_WEB_HOST_KEY);
-            leftPic = intent.getIntExtra(GlobalKey.OTHER_WEB_TITLE_BAR_LEFT_PIC_KEY, 999);
+            title = intent.getStringExtra("web_title");
+            path = intent.getStringExtra("web_path");
+            host = intent.getStringExtra("web_host");
+            leftPic = intent.getIntExtra("web_title_bar_left_pic", 999);
         } else {
-            title = bundle.getString(GlobalKey.OTHER_WEB_TITLE_KEY);
-            path = bundle.getString(GlobalKey.OTHER_WEB_PATH_KEY);
-            host = bundle.getString(GlobalKey.OTHER_WEB_HOST_KEY);
+            title = bundle.getString("web_title");
+            path = bundle.getString("web_path");
+            host = bundle.getString("web_host");
         }
 
         if (title != null) {
@@ -67,33 +63,18 @@ public class OtherWebActivity extends SimpleActivity {
             isShowTitleAndStatusBar(false);
         }
 
-        if (host == null) {
-            if (BuildConfig.DEBUG) {
-                host = SpUtils.getString(GlobalKey.DEBUG_ADDRESS);
-            } else {
-                if (BuildConfig.ENV_TYPE.equals(Global.ENV_GRAY)) {
-                    host = UrlPath.APP_GRAY_HOST;
-                } else {
-                    host = UrlPath.APP_RELEASE_HOST;
-                }
-            }
-        }
-
         if (leftPic != 999) {
             titleBar.setLeftPic(leftPic);
         }
-        String url = UrlProvider.builder()
-                .url(host, path, true)
-                .build();
-
+        String url = path;
         wbView.loadUrl(url);
     }
 
     @Override
     protected void onSavedData(Bundle bundle) {
-        bundle.putString(GlobalKey.OTHER_WEB_TITLE_KEY, title);
-        bundle.putString(GlobalKey.OTHER_WEB_PATH_KEY, path);
-        bundle.putString(GlobalKey.OTHER_WEB_HOST_KEY, host);
+        bundle.putString("web_title", title);
+        bundle.putString("web_path", path);
+        bundle.putString("web_host", host);
     }
 
     @Override
