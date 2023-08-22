@@ -57,26 +57,95 @@
             android:text="阿里上传" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_shareMenu"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="分享" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_shareMenu"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="分享" />
 
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="扫码" />
+        <Button
+            android:id="@+id/btn_scan"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="扫码" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_getLocation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="定位" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_getLocation"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="定位" />
+
+        <Button
+            android:id="@+id/btn_vibration"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="震动" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_sendMessage"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="复制信息并跳转微信" />
+
+        <Button
+            android:id="@+id/btn_copyMessage"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="复制信息只粘贴板" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_saveImage"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="保存图片到相册" />
+
+        <Button
+            android:id="@+id/btn_getSystemInfo"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="获取手机系统信息" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_loadWebView"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="加载独立webview" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"

@@ -24,8 +24,10 @@ import com.coolcollege.aar.bean.VideoRecordBean;
 import com.coolcollege.aar.callback.KXYCallback;
 import com.coolcollege.aar.module.APIModule;
 import com.coolcollege.aar.selector.MediaSelector;
+import com.coolcollege.application.MyApplication;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +43,13 @@ public class KXYAct extends Activity {
     private Button btn_shareMenu;
     private Button btn_scan;
     private Button btn_getLocation;
+    private Button btn_vibration;
+    private Button btn_sendMessage;
+    private Button btn_copyMessage;
+    private Button btn_saveImage;
+    private Button btn_getSystemInfo;
+    private Button btn_loadWebView;
+
     private TextView textView;
 
     private String entId = "1324923316665978965"; // 酷帮手企业id 非真实值的话，上传报错：{"error":"请求失败，请稍后重试", "isError":true}
@@ -111,6 +120,11 @@ public class KXYAct extends Activity {
                 imgBean.count = 9;
                 imgBean.percent = 80;
                 imgBean.compressed = true;
+                ArrayList<String> sourceTypes = new ArrayList<>();
+//                sourceTypes.add("album"); // 只相册
+                sourceTypes.add("camera"); // 只拍照
+                imgBean.sourceType = sourceTypes;
+
 
                 NativeEventParams params = new NativeEventParams();
                 params.methodName = "chooseImage";
@@ -209,11 +223,84 @@ public class KXYAct extends Activity {
                 callModule(params);
             }
         });
+        /** 震动 */
+        btn_vibration = findViewById(R.id.btn_vibration);
+        btn_vibration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "vibration";
+                params.methodData = "{\"duration\":1000}";
+
+                callModule(params);
+            }
+        });
+        /** 复制信息并跳转微信 */
+        btn_sendMessage = findViewById(R.id.btn_sendMessage);
+        btn_sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "sendMessage";
+                params.methodData = "{\"content\":\"人来人往\"}";
+
+                callModule(params);
+            }
+        });
+        /** 复制信息只粘贴板 */
+        btn_copyMessage = findViewById(R.id.btn_copyMessage);
+        btn_copyMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "copyMessage";
+                params.methodData = "{\"content\":\"202302031833\",\"alert\":\"已复制信息至粘贴板\"}";
+
+                callModule(params);
+            }
+        });
+        /** 保存图片收相册 */
+        btn_saveImage = findViewById(R.id.btn_saveImage);
+        btn_saveImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "saveImage";
+                params.methodData = "{\"url\":\"https://tenfei04.cfp.cn/creative/vcg/veer/612/veer-310941708.jpg\"}";
+
+                callModule(params);
+            }
+        });
+        /** 获取手机系统信息 */
+        btn_getSystemInfo = findViewById(R.id.btn_getSystemInfo);
+        btn_getSystemInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "getSystemInfo";
+                params.methodData = "{}";
+
+                callModule(params);
+            }
+        });
+
+        /** 加载独立webview */
+        btn_loadWebView = findViewById(R.id.btn_loadWebView);
+        btn_loadWebView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NativeEventParams params = new NativeEventParams();
+                params.methodName = "loadWebView";
+                params.methodData = "{\"url\":\"https://www.baidu.com\"}";
+
+                callModule(params);
+            }
+        });
     }
 
     private void callModule (NativeEventParams params) {
         // 无页面跳转的回调
-        APIModule.getAPIModule(KXYAct.this).moduleManage(params, entId, 123, new KXYCallback() {
+        APIModule.getAPIModule(KXYAct.this, MyApplication.get()).moduleManage(params, entId, 123, new KXYCallback() {
             @Override
             public void onOKCallback(Object o) {
                 runOnUiThread(new Runnable() {

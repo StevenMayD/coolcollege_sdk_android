@@ -208,8 +208,27 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
         titleBar.setOnTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                folderListPop.showAsDropDown(titleBar);
-                switchArrow();
+//                folderListPop.showAsDropDown(titleBar);
+//                switchArrow();
+
+                if (option.type.equals(MediaSelector.TYPE_IMG)) {
+                    ArrayList<String> sourceTypeList = option.sourceType;
+                    if (sourceTypeList.size() == 1) { // 拍照或相册
+                        String sourceType = sourceTypeList.get(0);
+                        if (sourceType.equals(MediaSelector.IMG_CAMERA)) {
+                            // 拍照 禁止"所有图片"的下拉操作
+                        } else if (sourceType.equals(MediaSelector.IMG_ALBUM)) {
+                            folderListPop.showAsDropDown(titleBar);
+                            switchArrow();
+                        }
+                    } else {
+                        folderListPop.showAsDropDown(titleBar);
+                        switchArrow();
+                    }
+                } else {
+                    folderListPop.showAsDropDown(titleBar);
+                    switchArrow();
+                }
             }
         });
 
@@ -448,7 +467,28 @@ public class MediaSelectorActivity extends SimpleActivity implements MediaStateL
         if (!totalList.isEmpty()) totalList.clear();
         ArrayList<MediaItemBean> list;
         if (option.type.equals(MediaSelector.TYPE_IMG)) {
-            list = result.get(GlobalKey.ALL_PIC);
+//            list = result.get(GlobalKey.ALL_PIC);
+            ArrayList<String> sourceTypeList = option.sourceType;
+            if (sourceTypeList.size() == 1) { // 拍照或相册
+                String sourceType = sourceTypeList.get(0);
+                if (sourceType.equals(MediaSelector.IMG_CAMERA)) {
+                    selectorAdapter.setHideCamera(false); // 获取相机资源 显示拍照按钮 并且不加载相册资源
+                    list = null;
+                } else if (sourceType.equals(MediaSelector.IMG_ALBUM)) {
+                    selectorAdapter.setHideCamera(true); // 获取相册资源 不允许拍照按钮
+                    list = result.get(GlobalKey.ALL_PIC);
+                } else {
+                    selectorAdapter.setHideCamera(false);
+                    list = result.get(GlobalKey.ALL_PIC);
+                }
+            } else if (sourceTypeList.size() == 2) { // 拍照和相册
+                selectorAdapter.setHideCamera(false); // 允许拍照
+                list = result.get(GlobalKey.ALL_PIC); // 获取相册资源
+            } else {
+                selectorAdapter.setHideCamera(false);
+                list = result.get(GlobalKey.ALL_PIC);
+            }
+
         } else {
             list = result.get(GlobalKey.ALL_VIDEO);
         }
